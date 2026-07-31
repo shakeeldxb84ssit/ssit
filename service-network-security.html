@@ -292,6 +292,93 @@
             margin: 0.5rem 0;
         }
 
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0071e3;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: #6e6e73;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Other Services Section */
+        .other-services {
+            background: #f5f5f7;
+        }
+
+        .services-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-mini-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+        }
+
+        .service-mini-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-mini-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .service-mini-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1d1d1d;
+            padding: 1rem 1rem 0.3rem 1rem;
+        }
+
+        .service-mini-card p {
+            color: #6e6e73;
+            font-size: 0.85rem;
+            padding: 0 1rem 1rem 1rem;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-inner {
@@ -455,6 +542,33 @@
         </div>
     </section>
 
+    <!-- Additional Benefits Section -->
+    <section class="content-section">
+        <h2 class="section-title benefits-title">Why Choose SSIT for Network Security?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h4 class="benefit-heading-1">Industry Expertise</h4>
+                <p class="benefit-desc-1">18+ years of experience protecting enterprise networks across UAE</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h4 class="benefit-heading-2">Rapid Response</h4>
+                <p class="benefit-desc-2">2-hour response time for security incidents and urgent threats</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">✅</div>
+                <h4 class="benefit-heading-3">Compliance Ready</h4>
+                <p class="benefit-desc-3">GDPR, ISO 27001, and local UAE compliance standards</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h4 class="benefit-heading-4">24/7 Monitoring</h4>
+                <p class="benefit-desc-4">Continuous real-time monitoring of all network traffic and threats</p>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-inner">
@@ -463,8 +577,39 @@
             <div class="cta-buttons">
                 <a href="tel:+971501234567" class="cta-button cta-white phone-btn">📞 Call Now</a>
                 <a href="https://wa.me/971501234567" class="cta-button cta-white whatsapp-btn">💬 WhatsApp</a>
-                <a href="index.html#contact" class="cta-button cta-outline back-btn">← Back to Services</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Other Services Section -->
+    <section class="content-section other-services">
+        <h2 class="section-title services-title">Explore Other Services</h2>
+        <div class="services-carousel">
+            <a href="service-cloud.html" class="service-mini-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Cloud Services">
+                <h4>Cloud & Azure Migration</h4>
+                <p>Seamless cloud transformation</p>
+            </a>
+            <a href="service-cctv.html" class="service-mini-card">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=400&h=250&fit=crop" alt="CCTV Systems">
+                <h4>Surveillance & Access</h4>
+                <p>Complete security monitoring</p>
+            </a>
+            <a href="service-itsupport.html" class="service-mini-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=400&h=250&fit=crop" alt="IT Support">
+                <h4>Managed IT Support</h4>
+                <p>24/7 expert assistance</p>
+            </a>
+            <a href="service-infrastructure.html" class="service-mini-card">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="Infrastructure">
+                <h4>Data Center Setup</h4>
+                <p>Enterprise infrastructure</p>
+            </a>
+            <a href="service-digital.html" class="service-mini-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop" alt="Digital Solutions">
+                <h4>Digital Solutions</h4>
+                <p>Web & marketing services</p>
+            </a>
         </div>
     </section>
 
@@ -508,11 +653,20 @@
                 'manage-3-desc': 'Dynamic security policies updated for current threats',
                 'manage-4': 'Incident Response',
                 'manage-4-desc': 'Rapid response to security breaches and anomalies',
+                'benefits-title': 'Why Choose SSIT for Network Security?',
+                'benefit-heading-1': 'Industry Expertise',
+                'benefit-desc-1': '18+ years of experience protecting enterprise networks',
+                'benefit-heading-2': 'Rapid Response',
+                'benefit-desc-2': '2-hour response time for security incidents',
+                'benefit-heading-3': 'Compliance Ready',
+                'benefit-desc-3': 'GDPR, ISO 27001, and local UAE compliance',
+                'benefit-heading-4': '24/7 Monitoring',
+                'benefit-desc-4': 'Continuous real-time monitoring of all network traffic',
                 'cta-title': 'Ready to Secure Your Network?',
                 'cta-desc': 'Let our security experts help you build a robust defense against cyber threats. Get a free security assessment today.',
                 'phone-btn': '📞 Call Now',
                 'whatsapp-btn': '💬 WhatsApp',
-                'back-btn': '← Back to Services',
+                'services-title': 'Explore Other Services',
                 'footer-text-1': '© 2024 SSIT - Enterprise IT Solutions & Support Services',
                 'footer-text-2': 'Serving Dubai | Abu Dhabi | Sharjah | Ajman'
             },
@@ -548,11 +702,20 @@
                 'manage-3-desc': 'سياسات أمان ديناميكية محدثة للتهديدات الحالية',
                 'manage-4': 'استجابة الحوادث',
                 'manage-4-desc': 'الاستجابة السريعة لانتهاكات الأمان والشذوذ',
+                'benefits-title': 'لماذا تختار SSIT لأمان الشبكة؟',
+                'benefit-heading-1': 'خبرة صناعية',
+                'benefit-desc-1': '18+ سنة من خبرة حماية شبكات المؤسسات',
+                'benefit-heading-2': 'استجابة سريعة',
+                'benefit-desc-2': 'وقت استجابة ساعتين لحوادث الأمان',
+                'benefit-heading-3': 'جاهز للامتثال',
+                'benefit-desc-3': 'GDPR و ISO 27001 والامتثال المحلي',
+                'benefit-heading-4': 'مراقبة 24/7',
+                'benefit-desc-4': 'مراقبة فورية مستمرة لجميع حركة الشبكة',
                 'cta-title': 'هل أنت مستعد لتأمين شبكتك؟',
                 'cta-desc': 'دع خبرائنا في الأمان يساعدونك في بناء دفاع قوي ضد التهديدات السيبرانية. احصل على تقييم أمان مجاني اليوم.',
                 'phone-btn': '📞 اتصل الآن',
                 'whatsapp-btn': '💬 واتس آب',
-                'back-btn': '← العودة إلى الخدمات',
+                'services-title': 'اكتشف خدمات أخرى',
                 'footer-text-1': '© 2024 SSIT - حلول تكنولوجيا المعلومات والخدمات المدارة',
                 'footer-text-2': 'نخدم دبي | أبو ظبي | الشارقة | عجمان'
             }
