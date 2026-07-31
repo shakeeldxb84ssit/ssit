@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveillance & Access Control - SSIT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1d1d1d; background: #ffffff; }
+        body.ar { direction: rtl; }
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); padding: 0.5rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { height: 50px; text-decoration: none; display: flex; align-items: center; }
+        .logo img { height: 100%; width: auto; object-fit: contain; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #1d1d1d; text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        nav a:hover { opacity: 0.6; }
+        .lang-toggle { display: flex; background: #f5f5f7; border-radius: 8px; padding: 4px; gap: 4px; }
+        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; color: #6e6e73; }
+        .lang-btn.active { background: white; color: #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .service-hero { background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%); padding: 4rem 2rem; color: white; }
+        .hero-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-content h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero-content p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-image { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; }
+        .content-section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; color: #1d1d1d; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; align-items: center; }
+        .content-text h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0071e3; }
+        .content-text p { font-size: 1.05rem; color: #6e6e73; margin-bottom: 1.5rem; line-height: 1.7; }
+        .content-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; }
+        .features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .feature-item { padding: 1.5rem; background: #f5f5f7; border-radius: 8px; border-left: 4px solid #0071e3; }
+        .feature-item h4 { font-weight: 700; margin-bottom: 0.5rem; color: #1d1d1d; }
+        .feature-item p { font-size: 0.95rem; color: #6e6e73; }
+        .cta-section { background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%); padding: 4rem 2rem; text-align: center; color: white; }
+        .cta-inner { max-width: 800px; margin: 0 auto; }
+        .cta-section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.05rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
+        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .cta-button { display: inline-block; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .cta-white { background: white; color: #0071e3; }
+        .cta-white:hover { background: #f0f0f0; transform: translateY(-2px); }
+        .cta-outline { background: transparent; color: white; border: 2px solid white; }
+        .cta-outline:hover { background: rgba(255, 255, 255, 0.1); }
+        footer { background: #1d1d1d; color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { color: #a1a1a6; font-size: 0.9rem; margin: 0.5rem 0; }
+        @media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr; } .content-grid { grid-template-columns: 1fr; } .hero-content h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; } .features-list { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { nav ul { display: none; } .hero-content h1 { font-size: 2rem; } .hero-image { height: 250px; } .content-image { height: 250px; } .cta-section h2 { font-size: 1.8rem; } .cta-buttons { flex-direction: column; } .cta-button { width: 100%; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="logo.png" alt="SSIT Logo"></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="index.html#services" class="nav-services">Services</a></li>
+                    <li><a href="index.html#why" class="nav-why">Why Us</a></li>
+                    <li><a href="index.html#contact" class="nav-contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">English</button>
+                    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1 class="page-title">Surveillance & Access Control</h1>
+                <p class="page-subtitle">Modern CCTV systems, biometric access control, and integrated security solutions for complete facility oversight and protection.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=600&h=400&fit=crop" alt="CCTV Systems" class="hero-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title what-title">What is Surveillance & Access Control?</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="what-heading">Complete Security Visibility</h3>
+                <p class="what-desc1">Surveillance and access control systems provide real-time monitoring and control of who enters your facility and when. This integrated approach combines video monitoring with identity-based access restrictions.</p>
+                <p class="what-desc2">Modern systems use AI-powered analytics to detect threats, track movements, and ensure regulatory compliance while maintaining operational efficiency.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1563986768711-b43f2e5077ae?w=600&h=400&fit=crop" alt="Security Monitoring" class="content-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title help-title">How SSIT Helps</h2>
+        <div class="content-grid" style="direction: ltr;">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f70674e90?w=600&h=400&fit=crop" alt="Access Control" class="content-image">
+            <div class="content-text">
+                <h3 class="help-heading">Expert Security Implementation</h3>
+                <p class="help-desc1">SSIT designs and installs comprehensive surveillance and access control systems tailored to your facility layout and security requirements.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="feature-1">Advanced CCTV Systems</h4>
+                        <p class="feature-1-desc">4K HD cameras with night vision and wide coverage areas</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-2">Biometric Access</h4>
+                        <p class="feature-2-desc">Fingerprint and facial recognition for secure access</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-3">Video Analytics</h4>
+                        <p class="feature-3-desc">AI-powered threat detection and behavioral analysis</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-4">Mobile Access</h4>
+                        <p class="feature-4-desc">Remote monitoring and control via mobile app</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title manage-title">How We Manage & Deliver</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="manage-heading">Complete System Management</h3>
+                <p class="manage-desc1">We handle site assessment, system design, professional installation, and ongoing maintenance to ensure your security system performs optimally.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="manage-1">Site Assessment</h4>
+                        <p class="manage-1-desc">Professional evaluation of coverage needs and vulnerabilities</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-2">System Installation</h4>
+                        <p class="manage-2-desc">Professional setup with minimal operational disruption</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-3">Integration</h4>
+                        <p class="manage-3-desc">Seamless integration with existing security systems</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-4">Support & Updates</h4>
+                        <p class="manage-4-desc">Ongoing maintenance and software updates</p>
+                    </div>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=600&h=400&fit=crop" alt="System Monitoring" class="content-image">
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2 class="cta-title">Secure Your Facility Today</h2>
+            <p class="cta-desc">Get professional surveillance and access control systems installed. Schedule a free security assessment with our experts.</p>
+            <div class="cta-buttons">
+                <a href="tel:+971501234567" class="cta-button cta-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="cta-button cta-white">💬 WhatsApp</a>
+                <a href="index.html#contact" class="cta-button cta-outline">← Back to Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text-1">&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
+        <p class="footer-text-2">Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                'nav-services': 'Services', 'nav-why': 'Why Us', 'nav-contact': 'Contact',
+                'page-title': 'Surveillance & Access Control', 'page-subtitle': 'Modern CCTV systems, biometric access control, and integrated security solutions.',
+                'what-title': 'What is Surveillance & Access Control?', 'what-heading': 'Complete Security Visibility',
+                'what-desc1': 'Surveillance and access control systems provide real-time monitoring and control of facility access.',
+                'what-desc2': 'Modern systems use AI-powered analytics to detect threats and ensure compliance.',
+                'help-title': 'How SSIT Helps', 'help-heading': 'Expert Security Implementation',
+                'help-desc1': 'SSIT designs and installs comprehensive surveillance systems tailored to your needs.',
+                'feature-1': 'Advanced CCTV', 'feature-1-desc': '4K HD cameras with night vision',
+                'feature-2': 'Biometric Access', 'feature-2-desc': 'Fingerprint and facial recognition',
+                'feature-3': 'Video Analytics', 'feature-3-desc': 'AI-powered threat detection',
+                'feature-4': 'Mobile Access', 'feature-4-desc': 'Remote monitoring via app',
+                'manage-title': 'How We Manage & Deliver', 'manage-heading': 'Complete System Management',
+                'manage-desc1': 'We handle assessment, design, installation, and maintenance.',
+                'manage-1': 'Site Assessment', 'manage-1-desc': 'Professional evaluation of coverage needs',
+                'manage-2': 'Installation', 'manage-2-desc': 'Professional setup with minimal disruption',
+                'manage-3': 'Integration', 'manage-3-desc': 'Seamless integration with existing systems',
+                'manage-4': 'Support & Updates', 'manage-4-desc': 'Ongoing maintenance and updates',
+                'cta-title': 'Secure Your Facility Today', 'cta-desc': 'Get professional surveillance systems installed. Schedule a free assessment.',
+                'footer-text-1': '© 2024 SSIT - Enterprise IT Solutions & Support Services',
+                'footer-text-2': 'Serving Dubai | Abu Dhabi | Sharjah | Ajman'
+            },
+            ar: {
+                'nav-services': 'الخدمات', 'nav-why': 'لماذا نحن', 'nav-contact': 'اتصل بنا',
+                'page-title': 'المراقبة والتحكم في الوصول', 'page-subtitle': 'أنظمة CCTV الحديثة والتحكم البيومتري.',
+                'what-title': 'ما هي المراقبة والتحكم؟', 'what-heading': 'الرؤية الأمنية الكاملة',
+                'what-desc1': 'توفر الأنظمة المراقبة الفورية والتحكم في وصول المنشأة.',
+                'what-desc2': 'تستخدم الأنظمة الحديثة AI للكشف عن التهديدات.',
+                'help-title': 'كيف تساعد SSIT', 'help-heading': 'تنفيذ أمان خبير',
+                'help-desc1': 'تقوم SSIT بتصميم وتثبيت أنظمة مراقبة شاملة.',
+                'feature-1': 'CCTV متقدم', 'feature-1-desc': 'كاميرات 4K مع رؤية ليلية',
+                'feature-2': 'الوصول البيومتري', 'feature-2-desc': 'بصمات والتعرف على الوجه',
+                'feature-3': 'تحليل الفيديو', 'feature-3-desc': 'كشف التهديدات بالذكاء الاصطناعي',
+                'feature-4': 'الوصول عن بعد', 'feature-4-desc': 'المراقبة الفورية عبر التطبيق',
+                'manage-title': 'كيف ندير وننجز', 'manage-heading': 'إدارة النظام الشاملة',
+                'manage-desc1': 'نتعامل مع التقييم والتصميم والتثبيت والصيانة.',
+                'manage-1': 'تقييم الموقع', 'manage-1-desc': 'تقييم احترافي لاحتياجات التغطية',
+                'manage-2': 'التثبيت', 'manage-2-desc': 'إعداد احترافي مع الحد الأدنى من التعطيل',
+                'manage-3': 'التكامل', 'manage-3-desc': 'التكامل السلس مع الأنظمة الموجودة',
+                'manage-4': 'الدعم والتحديثات', 'manage-4-desc': 'الصيانة المستمرة والتحديثات',
+                'cta-title': 'آمن منشأتك اليوم', 'cta-desc': 'احصل على أنظمة مراقبة احترافية. حدد تقييم مجاني.',
+                'footer-text-1': '© 2024 SSIT - حلول تكنولوجيا المعلومات',
+                'footer-text-2': 'نخدم دبي | أبو ظبي | الشارقة | عجمان'
+            }
+        };
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const html = document.documentElement;
+            html.lang = lang;
+            const body = document.body;
+            if (lang === 'ar') { body.classList.add('ar'); } else { body.classList.remove('ar'); }
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll('.' + key);
+                elements.forEach(el => { el.textContent = translations[lang][key]; });
+            });
+            localStorage.setItem('lang', lang);
+        }
+        const savedLang = localStorage.getItem('lang') || 'en';
+        if (savedLang === 'ar') { document.body.classList.add('ar'); }
+        setLang(savedLang);
+    </script>
+</body>
+</html>
