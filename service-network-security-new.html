@@ -7,216 +7,72 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #1d1d1d; background: #fff; }
-        body.ar { direction: rtl; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #1d1d1d; }
 
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 0.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        header { background: rgba(255, 255, 255, 0.98); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
         .logo { height: 50px; display: flex; align-items: center; }
-        .logo img { height: 100%; width: auto; }
-        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        .logo img { height: 100%; }
         nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: #1d1d1d; text-decoration: none; font-weight: 500; transition: opacity 0.3s; }
-        nav a:hover { opacity: 0.6; }
-
+        nav a { color: #1d1d1d; text-decoration: none; font-weight: 500; }
         .lang-toggle { display: flex; background: #f5f5f7; border-radius: 8px; padding: 4px; gap: 4px; }
-        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; font-weight: 500; font-size: 0.9rem; color: #6e6e73; transition: all 0.3s; }
-        .lang-btn.active { background: white; color: #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; color: #6e6e73; }
+        .lang-btn.active { background: white; color: #0071e3; }
 
-        .hero {
-            background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%);
-            padding: 5rem 2rem;
-            color: white;
-        }
-
-        .hero-inner { max-width: 1400px; margin: 0 auto; }
-        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+        .hero { background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%); padding: 5rem 2rem; color: white; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
         .hero p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; max-width: 800px; }
-
-        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn { display: inline-block; padding: 0.9rem 1.8rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
-        .btn-white { background: white; color: #0071e3; }
-        .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: white; border: 2px solid white; }
-        .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
 
         .section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
         .section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
 
         .service-item {
             background: #f5f5f7;
             border-radius: 12px;
-            overflow: hidden;
+            padding: 2rem;
             transition: all 0.3s;
         }
 
-        .service-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
+        .service-item:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
 
-        .service-item-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+        .service-item-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .service-item h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .service-item p { color: #6e6e73; font-size: 0.95rem; line-height: 1.6; }
 
-        .service-item-content {
-            padding: 2rem;
-        }
-
-        .service-item-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #0071e3;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-item h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: #1d1d1d;
-        }
-
-        .service-item p {
-            color: #6e6e73;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .features-list {
-            background: #f5f5f7;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .features-list h3 { margin-bottom: 1.5rem; }
+        .features-list { background: #f5f5f7; padding: 2rem; border-radius: 12px; margin: 2rem 0; }
         .features-list ul { list-style: none; }
-        .features-list li { padding: 0.8rem 0; padding-left: 2rem; position: relative; color: #6e6e73; }
+        .features-list li { padding: 0.8rem 0 0.8rem 2rem; position: relative; color: #6e6e73; }
         .features-list li:before { content: "✓"; position: absolute; left: 0; color: #0071e3; font-weight: 700; }
 
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .benefit {
-            padding: 1.5rem;
-            background: white;
-            border: 2px solid #f0f0f0;
-            border-radius: 12px;
-            text-align: center;
-        }
-
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .benefit { padding: 1.5rem; background: white; border: 2px solid #f0f0f0; border-radius: 12px; text-align: center; }
+        .benefit-icon { font-size: 2rem; margin-bottom: 0.5rem; }
         .benefit h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #0071e3; }
-        .benefit p { color: #6e6e73; font-size: 0.9rem; }
 
-        .process {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
+        .process { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .process-step { text-align: center; padding: 2rem; background: #f5f5f7; border-radius: 12px; }
+        .process-number { font-size: 3rem; font-weight: 700; color: #0071e3; margin-bottom: 1rem; }
 
-        .process-step {
-            text-align: center;
-            padding: 2rem;
-            background: #f5f5f7;
-            border-radius: 12px;
-        }
-
-        .process-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #0071e3;
-            margin-bottom: 1rem;
-        }
-
-        .process-step h4 { font-size: 1.2rem; margin-bottom: 0.8rem; }
-        .process-step p { color: #6e6e73; font-size: 0.9rem; }
-
-        .cta-section {
-            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-            color: white;
-            border-radius: 12px;
-            margin: 3rem 0;
-        }
-
+        .cta-section { background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%); padding: 4rem 2rem; text-align: center; color: white; border-radius: 12px; margin: 3rem 0; }
         .cta-section h2 { color: white; margin-bottom: 1rem; }
-        .cta-section p { color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; }
+        .btn { display: inline-block; padding: 0.9rem 1.8rem; background: white; color: #0071e3; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.5rem; }
 
-        .other-services {
-            background: #f5f5f7;
-            margin-top: 3rem;
-            padding: 3rem 2rem;
-            border-radius: 12px;
-        }
+        .other-services { background: #f5f5f7; margin-top: 3rem; padding: 3rem 2rem; border-radius: 12px; }
+        .services-carousel { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+        .service-mini-card { background: white; border-radius: 12px; padding: 1rem; text-align: center; text-decoration: none; color: inherit; }
+        .service-mini-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 
-        .other-services h2 { margin-bottom: 2rem; }
-
-        .services-carousel {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .service-mini-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .service-mini-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-mini-card img { width: 100%; height: 120px; object-fit: cover; }
-        .service-mini-card h4 { font-size: 0.9rem; font-weight: 700; padding: 0.8rem; }
-        .service-mini-card p { font-size: 0.8rem; color: #6e6e73; padding: 0 0.8rem 0.8rem 0.8rem; }
-
-        footer { background: #1d1d1d; color: white; padding: 3rem 2rem; text-align: center; }
-        footer p { color: #a1a1a6; font-size: 0.9rem; margin: 0.5rem 0; }
-
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .section h2 { font-size: 1.8rem; }
-            .services-grid { grid-template-columns: 1fr; }
-        }
+        footer { background: #1d1d1d; color: white; padding: 2rem; text-align: center; }
+        @media (max-width: 768px) { nav ul { display: none; } .hero h1 { font-size: 2rem; } .section h2 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <a href="index.html" class="logo"><img src="logo.png" alt="SSIT"></a>
-            <div class="nav-right">
+            <div style="display: flex; gap: 1rem;">
                 <ul>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
@@ -230,13 +86,11 @@
     </header>
 
     <section class="hero">
-        <div class="hero-inner">
-            <h1>Network Security Solutions</h1>
-            <p>Protect your business with enterprise-grade firewalls, real-time threat detection, and comprehensive DDoS protection. Our certified security experts deploy defense systems tailored to your industry and infrastructure.</p>
-            <div class="hero-cta">
-                <a href="tel:+971501234567" class="btn btn-white">📞 Call Now</a>
-                <a href="https://wa.me/971501234567" class="btn btn-white">💬 WhatsApp</a>
-            </div>
+        <h1>Network Security Solutions</h1>
+        <p>Protect your business with enterprise-grade firewalls, real-time threat detection, and comprehensive DDoS protection. Our certified security experts deploy defense systems tailored to your industry and infrastructure.</p>
+        <div style="margin-top: 2rem;">
+            <a href="tel:+971501234567" class="btn" style="background: white; color: #0071e3;">📞 Call Now</a>
+            <a href="https://wa.me/971501234567" class="btn" style="background: white; color: #0071e3;">💬 WhatsApp</a>
         </div>
     </section>
 
@@ -244,57 +98,34 @@
         <h2>What We Provide</h2>
         <div class="services-grid">
             <div class="service-item">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Firewall Solutions" class="service-item-img">
-                <div class="service-item-content">
-                    <div class="service-item-number">01</div>
-                    <h3>Advanced Firewall Configuration</h3>
-                    <p>Enterprise firewalls (FortiGate, Palo Alto, SonicWall) with deep packet inspection, application-level filtering, and threat intelligence integration for complete network boundary protection.</p>
-                </div>
+                <div class="service-item-icon">🔥</div>
+                <h3>Advanced Firewall Configuration</h3>
+                <p>Enterprise firewalls with deep packet inspection, application-level filtering, and threat intelligence integration.</p>
             </div>
-
             <div class="service-item">
-                <img src="https://images.unsplash.com/photo-1563986768711-b43f2e5077ae?w=800" alt="DDoS Protection" class="service-item-img">
-                <div class="service-item-content">
-                    <div class="service-item-number">02</div>
-                    <h3>DDoS Protection & Mitigation</h3>
-                    <p>Always-on DDoS defense with automatic attack detection, behavioral analysis, and intelligent filtering to protect against volumetric, protocol, and application-layer attacks.</p>
-                </div>
+                <div class="service-item-icon">🛡️</div>
+                <h3>DDoS Protection & Mitigation</h3>
+                <p>Always-on DDoS defense with automatic attack detection and intelligent filtering.</p>
             </div>
-
             <div class="service-item">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f70674e90?w=800" alt="VPN Setup" class="service-item-img">
-                <div class="service-item-content">
-                    <div class="service-item-number">03</div>
-                    <h3>VPN & Secure Remote Access</h3>
-                    <p>Site-to-site VPN, SSL/TLS VPN, and zero-trust remote access solutions enabling secure hybrid work without compromising network security or user experience.</p>
-                </div>
+                <div class="service-item-icon">🔐</div>
+                <h3>VPN & Secure Remote Access</h3>
+                <p>Site-to-site VPN and zero-trust remote access for secure hybrid work.</p>
             </div>
-
             <div class="service-item">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Threat Detection" class="service-item-img">
-                <div class="service-item-content">
-                    <div class="service-item-number">04</div>
-                    <h3>24/7 Threat Monitoring</h3>
-                    <p>Continuous security monitoring with SIEM integration, real-time alerts, and incident correlation to detect and respond to threats before they impact your business.</p>
-                </div>
+                <div class="service-item-icon">👁️</div>
+                <h3>24/7 Threat Monitoring</h3>
+                <p>Continuous monitoring with SIEM integration and real-time alerts.</p>
             </div>
-
             <div class="service-item">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=800" alt="Intrusion Prevention" class="service-item-img">
-                <div class="service-item-content">
-                    <div class="service-item-number">05</div>
-                    <h3>Intrusion Detection & Prevention</h3>
-                    <p>IDS/IPS systems with behavioral analysis and signature-based detection to identify and block suspicious network traffic and malware in real-time.</p>
-                </div>
+                <div class="service-item-icon">⚡</div>
+                <h3>Intrusion Detection & Prevention</h3>
+                <p>IDS/IPS systems with behavioral analysis and signature-based detection.</p>
             </div>
-
             <div class="service-item">
-                <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=800" alt="Security Compliance" class="service-item-img">
-                <div class="service-item-content">
-                    <div class="service-item-number">06</div>
-                    <h3>Compliance & Security Audits</h3>
-                    <p>Regular security assessments, penetration testing, and compliance reporting for ISO 27001, GDPR, and UAE PDPL standards with detailed remediation guidance.</p>
-                </div>
+                <div class="service-item-icon">✅</div>
+                <h3>Compliance & Security Audits</h3>
+                <p>Regular security assessments, penetration testing, and compliance reporting.</p>
             </div>
         </div>
     </section>
@@ -303,21 +134,21 @@
         <div class="features-list">
             <h3>What We Offer</h3>
             <ul>
-                <li>Enterprise-grade firewall deployment & management with redundancy</li>
-                <li>Network segmentation & DMZ configuration for critical systems</li>
-                <li>DDoS protection with automatic mitigation and scalable bandwidth</li>
+                <li>Enterprise-grade firewall deployment & management</li>
+                <li>Network segmentation & DMZ configuration</li>
+                <li>DDoS protection with automatic mitigation</li>
                 <li>Advanced threat prevention with zero-day protection</li>
-                <li>VPN setup for secure remote access & branch connectivity</li>
-                <li>Security policy design aligned with industry standards</li>
-                <li>SSL certificate management & encryption protocols</li>
-                <li>Web application firewall (WAF) for API & application protection</li>
-                <li>Email security gateway with spam & malware filtering</li>
-                <li>Endpoint detection & response (EDR) integration</li>
-                <li>Security incident response playbooks & procedures</li>
-                <li>Regular security updates & threat intelligence feeds</li>
-                <li>GDPR, ISO 27001, NESA, and UAE PDPL compliance documentation</li>
-                <li>24/7 monitoring with 2-hour emergency response SLA</li>
-                <li>Staff training on security best practices & incident handling</li>
+                <li>VPN setup for secure remote access</li>
+                <li>Security policy design aligned with standards</li>
+                <li>SSL certificate management & encryption</li>
+                <li>Web application firewall (WAF)</li>
+                <li>Email security gateway</li>
+                <li>Endpoint detection & response (EDR)</li>
+                <li>Security incident response playbooks</li>
+                <li>Regular security updates & threat feeds</li>
+                <li>GDPR, ISO 27001, NESA compliance</li>
+                <li>24/7 monitoring with emergency response</li>
+                <li>Staff training on security best practices</li>
             </ul>
         </div>
     </section>
@@ -326,28 +157,24 @@
         <h2>Key Benefits</h2>
         <div class="benefits-grid">
             <div class="benefit">
+                <div class="benefit-icon">📊</div>
                 <h4>99.9% Uptime</h4>
-                <p>Redundant firewalls & failover ensure continuous network availability</p>
+                <p>Redundant firewalls ensure continuous availability</p>
             </div>
             <div class="benefit">
-                <h4>Rapid Threat Response</h4>
-                <p>Instant detection & blocking of malicious traffic</p>
+                <div class="benefit-icon">⚡</div>
+                <h4>Rapid Response</h4>
+                <p>Instant detection & blocking of threats</p>
             </div>
             <div class="benefit">
-                <h4>Regulatory Compliance</h4>
-                <p>Audit-ready security controls & compliance documentation</p>
+                <div class="benefit-icon">✅</div>
+                <h4>Compliance Ready</h4>
+                <p>Audit-ready security controls</p>
             </div>
             <div class="benefit">
+                <div class="benefit-icon">🔒</div>
                 <h4>Zero-Trust Security</h4>
-                <p>Never trust, always verify approach to network access</p>
-            </div>
-            <div class="benefit">
-                <h4>Scalable Protection</h4>
-                <p>Grows with your business from startups to enterprises</p>
-            </div>
-            <div class="benefit">
-                <h4>Expert Support</h4>
-                <p>Certified security engineers with 15+ years experience</p>
+                <p>Never trust, always verify access</p>
             </div>
         </div>
     </section>
@@ -357,23 +184,23 @@
         <div class="process">
             <div class="process-step">
                 <div class="process-number">01</div>
-                <h4>Security Assessment</h4>
-                <p>We evaluate your current network, identify vulnerabilities, and document security gaps</p>
+                <h4>Assessment</h4>
+                <p>Evaluate your network & identify vulnerabilities</p>
             </div>
             <div class="process-step">
                 <div class="process-number">02</div>
-                <h4>Security Design</h4>
-                <p>We design a comprehensive protection strategy tailored to your business requirements</p>
+                <h4>Design</h4>
+                <p>Create comprehensive protection strategy</p>
             </div>
             <div class="process-step">
                 <div class="process-number">03</div>
                 <h4>Implementation</h4>
-                <p>Professional deployment with minimal disruption and full staff training</p>
+                <p>Deploy with minimal disruption</p>
             </div>
             <div class="process-step">
                 <div class="process-number">04</div>
-                <h4>Continuous Monitoring</h4>
-                <p>24/7 monitoring, updates, and optimizations to stay ahead of threats</p>
+                <h4>Support</h4>
+                <p>24/7 monitoring & optimization</p>
             </div>
         </div>
     </section>
@@ -381,10 +208,10 @@
     <section class="section">
         <div class="cta-section">
             <h2>Ready to Secure Your Network?</h2>
-            <p>Get a free security assessment from our experts. We'll identify risks and recommend a protection strategy for your business.</p>
-            <div class="hero-cta">
-                <a href="tel:+971501234567" class="btn btn-white">📞 Call Now</a>
-                <a href="https://wa.me/971501234567" class="btn btn-white">💬 WhatsApp</a>
+            <p>Get a free security assessment from our experts.</p>
+            <div>
+                <a href="tel:+971501234567" class="btn">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="btn">💬 WhatsApp</a>
             </div>
         </div>
     </section>
@@ -393,56 +220,39 @@
         <div class="other-services">
             <h2>Explore Other Services</h2>
             <div class="services-carousel">
-                <a href="service-cloud-new.html" class="service-mini-card">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400" alt="Cloud">
-                    <h4>Cloud & Azure Migration</h4>
-                    <p>Seamless cloud transformation</p>
+                <a href="service-cloud-simple.html" class="service-mini-card">
+                    <div class="service-mini-icon">☁️</div>
+                    <h4>Cloud Migration</h4>
                 </a>
-                <a href="service-cctv-new.html" class="service-mini-card">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=400" alt="CCTV">
-                    <h4>Surveillance Systems</h4>
-                    <p>Security monitoring</p>
+                <a href="service-cctv-simple.html" class="service-mini-card">
+                    <div class="service-mini-icon">📹</div>
+                    <h4>Surveillance</h4>
                 </a>
-                <a href="service-itsupport-new.html" class="service-mini-card">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400" alt="IT Support">
-                    <h4>Managed IT Support</h4>
-                    <p>24/7 assistance</p>
+                <a href="service-itsupport-simple.html" class="service-mini-card">
+                    <div class="service-mini-icon">🛠️</div>
+                    <h4>IT Support</h4>
                 </a>
-                <a href="service-infrastructure-new.html" class="service-mini-card">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400" alt="Infrastructure">
-                    <h4>Data Center</h4>
-                    <p>Infrastructure setup</p>
+                <a href="service-infrastructure-simple.html" class="service-mini-card">
+                    <div class="service-mini-icon">🖥️</div>
+                    <h4>Infrastructure</h4>
                 </a>
-                <a href="service-digital-new.html" class="service-mini-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=400" alt="Digital">
-                    <h4>Digital Solutions</h4>
-                    <p>Web development</p>
+                <a href="service-digital-simple.html" class="service-mini-card">
+                    <div class="service-mini-icon">💻</div>
+                    <h4>Digital</h4>
                 </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
-        <p>Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+        <p>&copy; 2024 SSIT | Dubai | Abu Dhabi | Sharjah | Ajman</p>
+        <p>📞 +971 50 1234 567 | WhatsApp 24/7</p>
     </footer>
 
     <script>
         function setLang(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            const body = document.body;
-            if (lang === 'ar') {
-                body.classList.add('ar');
-            } else {
-                body.classList.remove('ar');
-            }
-            localStorage.setItem('lang', lang);
-        }
-
-        const savedLang = localStorage.getItem('lang') || 'en';
-        if (savedLang === 'ar') {
-            document.body.classList.add('ar');
         }
     </script>
 </body>
