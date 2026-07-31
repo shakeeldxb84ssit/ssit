@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud & Azure Migration - SSIT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #1d1d1d; background: #fff; }
+        body.ar { direction: rtl; }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { height: 50px; display: flex; align-items: center; }
+        .logo img { height: 100%; width: auto; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #1d1d1d; text-decoration: none; font-weight: 500; transition: opacity 0.3s; }
+        nav a:hover { opacity: 0.6; }
+
+        .lang-toggle { display: flex; background: #f5f5f7; border-radius: 8px; padding: 4px; gap: 4px; }
+        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; font-weight: 500; font-size: 0.9rem; color: #6e6e73; transition: all 0.3s; }
+        .lang-btn.active { background: white; color: #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+
+        .hero { background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%); padding: 5rem 2rem; color: white; }
+
+        .hero-inner { max-width: 1400px; margin: 0 auto; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; max-width: 800px; }
+
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 0.9rem 1.8rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-white { background: white; color: #0071e3; }
+        .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: white; border: 2px solid white; }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+
+        .service-item { background: #f5f5f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .service-item:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+
+        .service-item-img { width: 100%; height: 200px; object-fit: cover; }
+        .service-item-content { padding: 2rem; }
+        .service-item-number { font-size: 2.5rem; font-weight: 700; color: #0071e3; margin-bottom: 0.5rem; }
+        .service-item h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .service-item p { color: #6e6e73; font-size: 0.95rem; line-height: 1.6; }
+
+        .features-list { background: #f5f5f7; padding: 2rem; border-radius: 12px; margin: 2rem 0; }
+        .features-list h3 { margin-bottom: 1.5rem; }
+        .features-list ul { list-style: none; }
+        .features-list li { padding: 0.8rem 0; padding-left: 2rem; position: relative; color: #6e6e73; }
+        .features-list li:before { content: "✓"; position: absolute; left: 0; color: #0071e3; font-weight: 700; }
+
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .benefit { padding: 1.5rem; background: white; border: 2px solid #f0f0f0; border-radius: 12px; text-align: center; }
+        .benefit h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #0071e3; }
+        .benefit p { color: #6e6e73; font-size: 0.9rem; }
+
+        .process { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .process-step { text-align: center; padding: 2rem; background: #f5f5f7; border-radius: 12px; }
+        .process-number { font-size: 3rem; font-weight: 700; color: #0071e3; margin-bottom: 1rem; }
+        .process-step h4 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .process-step p { color: #6e6e73; font-size: 0.9rem; }
+
+        .cta-section { background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%); padding: 4rem 2rem; text-align: center; color: white; border-radius: 12px; margin: 3rem 0; }
+        .cta-section h2 { color: white; margin-bottom: 1rem; }
+        .cta-section p { color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; }
+
+        .other-services { background: #f5f5f7; margin-top: 3rem; padding: 3rem 2rem; border-radius: 12px; }
+        .other-services h2 { margin-bottom: 2rem; }
+
+        .services-carousel { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+
+        .service-mini-card { background: white; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+        .service-mini-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); }
+        .service-mini-card img { width: 100%; height: 120px; object-fit: cover; }
+        .service-mini-card h4 { font-size: 0.9rem; font-weight: 700; padding: 0.8rem; }
+        .service-mini-card p { font-size: 0.8rem; color: #6e6e73; padding: 0 0.8rem 0.8rem 0.8rem; }
+
+        footer { background: #1d1d1d; color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { color: #a1a1a6; font-size: 0.9rem; margin: 0.5rem 0; }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .section h2 { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="logo.png" alt="SSIT"></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" onclick="setLang('ar')">AR</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Cloud & Azure Migration</h1>
+            <p>Seamlessly transform your IT infrastructure to Microsoft Azure and cloud platforms. We handle planning, migration, optimization, and ongoing management for your complete digital transformation journey.</p>
+            <div class="hero-cta">
+                <a href="tel:+971501234567" class="btn btn-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="btn btn-white">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>What We Provide</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=300&fit=crop" alt="Cloud Assessment" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">01</div>
+                    <h3>Cloud Readiness Assessment</h3>
+                    <p>Evaluate current infrastructure, identify cloud-ready workloads, assess licensing costs, and create a detailed migration roadmap aligned with your business goals.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Azure Setup" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">02</div>
+                    <h3>Azure Infrastructure Setup</h3>
+                    <p>Deploy virtual machines, app services, databases, and storage solutions with proper resource groups, networking, and security configurations for optimal performance.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1522869635100-ce75c88a8e14?w=500&h=300&fit=crop" alt="Migration Services" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">03</div>
+                    <h3>Workload Migration & Rehost</h3>
+                    <p>Lift-and-shift or re-platform your applications with minimal downtime, data migration, validation, and rollback procedures for zero business interruption.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1432888498266-38c235ba84b7?w=500&h=300&fit=crop" alt="Microsoft 365" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">04</div>
+                    <h3>Microsoft 365 & Business Apps</h3>
+                    <p>Deploy and integrate Teams, Exchange Online, SharePoint, and Microsoft 365 applications with single sign-on, governance, and compliance configurations.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop" alt="Hybrid Setup" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">05</div>
+                    <h3>Hybrid Cloud Architecture</h3>
+                    <p>Design and implement hybrid infrastructure connecting on-premises systems with Azure for flexibility, scalability, and disaster recovery capabilities.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1536241749947-e98b2be53b0b?w=500&h=300&fit=crop" alt="Cloud Optimization" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">06</div>
+                    <h3>Cloud Cost Optimization</h3>
+                    <p>Analyze cloud spending, identify optimization opportunities, implement reserved instances, and monitor budgets to reduce costs by 30-40% without compromising performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="features-list">
+            <h3>What We Offer</h3>
+            <ul>
+                <li>Comprehensive cloud readiness assessment & ROI analysis</li>
+                <li>Custom migration planning with phase-wise timelines</li>
+                <li>Azure subscription management & governance setup</li>
+                <li>Virtual machine deployment & optimization</li>
+                <li>Database migration (SQL Server, MySQL, PostgreSQL to Azure)</li>
+                <li>Application migration & containerization (Docker, Kubernetes)</li>
+                <li>Microsoft 365 setup with advanced security & compliance</li>
+                <li>Hybrid cloud setup with ExpressRoute & VPN</li>
+                <li>Cloud backup & disaster recovery solutions</li>
+                <li>Azure Synapse & Business Intelligence implementation</li>
+                <li>API management & integration services</li>
+                <li>Cost monitoring & optimization with Azure Cost Management</li>
+                <li>Security & compliance: ISO 27001, GDPR, NESA, UAE PDPL</li>
+                <li>Staff training & knowledge transfer on cloud platforms</li>
+                <li>24/7 cloud infrastructure support & management</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Key Benefits</h2>
+        <div class="benefits-grid">
+            <div class="benefit">
+                <h4>30-40% Cost Reduction</h4>
+                <p>Optimized cloud spending with no excess capacity</p>
+            </div>
+            <div class="benefit">
+                <h4>99.95% SLA Uptime</h4>
+                <p>Enterprise-grade reliability & redundancy</p>
+            </div>
+            <div class="benefit">
+                <h4>Faster Deployment</h4>
+                <p>Launch applications in days, not months</p>
+            </div>
+            <div class="benefit">
+                <h4>Global Scalability</h4>
+                <p>Scale instantly across regions & availability zones</p>
+            </div>
+            <div class="benefit">
+                <h4>Enhanced Security</h4>
+                <p>Built-in encryption, compliance, & threat protection</p>
+            </div>
+            <div class="benefit">
+                <h4>Real-Time Analytics</h4>
+                <p>Data-driven insights with Azure Analytics</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>How We Work</h2>
+        <div class="process">
+            <div class="process-step">
+                <div class="process-number">01</div>
+                <h4>Assessment & Planning</h4>
+                <p>Evaluate infrastructure, define strategy, and create detailed migration plan</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">02</div>
+                <h4>Design & Architecture</h4>
+                <p>Design cloud infrastructure, security, and governance frameworks</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">03</div>
+                <h4>Migration & Testing</h4>
+                <p>Execute migration with validation, testing, and rollback procedures</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">04</div>
+                <h4>Optimization & Support</h4>
+                <p>Optimize performance, costs, and provide ongoing 24/7 management</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="cta-section">
+            <h2>Ready to Migrate to the Cloud?</h2>
+            <p>Get a free cloud assessment and custom migration plan. Our Azure experts will guide you through every step of your digital transformation.</p>
+            <div class="hero-cta">
+                <a href="tel:+971501234567" class="btn btn-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="btn btn-white">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="other-services">
+            <h2>Explore Other Services</h2>
+            <div class="services-carousel">
+                <a href="service-network-security-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1563986768711-b43f2e5077ae?w=400&h=250&fit=crop" alt="Security">
+                    <h4>Network Security</h4>
+                    <p>Firewall & protection</p>
+                </a>
+                <a href="service-cctv-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=400&h=250&fit=crop" alt="CCTV">
+                    <h4>Surveillance</h4>
+                    <p>Security systems</p>
+                </a>
+                <a href="service-itsupport-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="IT Support">
+                    <h4>IT Support</h4>
+                    <p>24/7 assistance</p>
+                </a>
+                <a href="service-infrastructure-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop" alt="Infrastructure">
+                    <h4>Data Center</h4>
+                    <p>Infrastructure</p>
+                </a>
+                <a href="service-digital-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=400&h=250&fit=crop" alt="Digital">
+                    <h4>Digital Solutions</h4>
+                    <p>Web development</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
+        <p>Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            localStorage.setItem('lang', lang);
+        }
+    </script>
+</body>
+</html>

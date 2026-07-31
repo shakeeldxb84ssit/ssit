@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveillance & Access Control - SSIT</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #1d1d1d; background: #fff; }
+        body.ar { direction: rtl; }
+        header { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); padding: 0.5rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { height: 50px; display: flex; align-items: center; }
+        .logo img { height: 100%; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #1d1d1d; text-decoration: none; font-weight: 500; transition: opacity 0.3s; }
+        nav a:hover { opacity: 0.6; }
+        .lang-toggle { display: flex; background: #f5f5f7; border-radius: 8px; padding: 4px; gap: 4px; }
+        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; font-weight: 500; font-size: 0.9rem; color: #6e6e73; transition: all 0.3s; }
+        .lang-btn.active { background: white; color: #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .hero { background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%); padding: 5rem 2rem; color: white; }
+        .hero-inner { max-width: 1400px; margin: 0 auto; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; max-width: 800px; }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 0.9rem 1.8rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-white { background: white; color: #0071e3; }
+        .btn-white:hover { background: #f0f0f0; transform: translateY(-2px); }
+        .section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .service-item { background: #f5f5f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .service-item:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        .service-item-img { width: 100%; height: 200px; object-fit: cover; }
+        .service-item-content { padding: 2rem; }
+        .service-item-number { font-size: 2.5rem; font-weight: 700; color: #0071e3; margin-bottom: 0.5rem; }
+        .service-item h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .service-item p { color: #6e6e73; font-size: 0.95rem; }
+        .features-list { background: #f5f5f7; padding: 2rem; border-radius: 12px; margin: 2rem 0; }
+        .features-list h3 { margin-bottom: 1.5rem; }
+        .features-list ul { list-style: none; }
+        .features-list li { padding: 0.8rem 0; padding-left: 2rem; position: relative; color: #6e6e73; }
+        .features-list li:before { content: "✓"; position: absolute; left: 0; color: #0071e3; font-weight: 700; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .benefit { padding: 1.5rem; background: white; border: 2px solid #f0f0f0; border-radius: 12px; text-align: center; }
+        .benefit h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #0071e3; }
+        .benefit p { color: #6e6e73; font-size: 0.9rem; }
+        .process { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .process-step { text-align: center; padding: 2rem; background: #f5f5f7; border-radius: 12px; }
+        .process-number { font-size: 3rem; font-weight: 700; color: #0071e3; margin-bottom: 1rem; }
+        .cta-section { background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%); padding: 4rem 2rem; text-align: center; color: white; border-radius: 12px; margin: 3rem 0; }
+        .cta-section h2 { color: white; margin-bottom: 1rem; }
+        .other-services { background: #f5f5f7; margin-top: 3rem; padding: 3rem 2rem; border-radius: 12px; }
+        .services-carousel { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+        .service-mini-card { background: white; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+        .service-mini-card:hover { transform: translateY(-8px); }
+        .service-mini-card img { width: 100%; height: 120px; object-fit: cover; }
+        .service-mini-card h4 { font-size: 0.9rem; font-weight: 700; padding: 0.8rem; }
+        footer { background: #1d1d1d; color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { color: #a1a1a6; font-size: 0.9rem; margin: 0.5rem 0; }
+        @media (max-width: 768px) { nav ul { display: none; } .hero h1 { font-size: 2rem; } .section h2 { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="logo.png" alt="SSIT"></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                    <button class="lang-btn" onclick="setLang('ar')">AR</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Surveillance & Access Control</h1>
+            <p>Modern CCTV systems, biometric access control, and integrated security solutions. We provide complete facility oversight with AI-powered analytics and real-time monitoring for maximum security.</p>
+            <div class="hero-cta">
+                <a href="tel:+971501234567" class="btn btn-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="btn btn-white">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>What We Provide</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=500&h=300&fit=crop" alt="CCTV" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">01</div>
+                    <h3>4K CCTV Installation</h3>
+                    <p>4K and 8MP cameras with 360° coverage, night vision, and weather-resistant design. Professional installation with proper cabling and power management.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1563986768711-b43f2e5077ae?w=500&h=300&fit=crop" alt="AI Analytics" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">02</div>
+                    <h3>AI-Powered Analytics</h3>
+                    <p>Facial recognition, motion detection, crowd counting, and behavioral analysis for intelligent threat detection and automated alerts.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Access Control" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">03</div>
+                    <h3>Biometric Access Control</h3>
+                    <p>Fingerprint, facial recognition, and card-based access systems with time attendance tracking and detailed audit logs.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop" alt="Recording" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">04</div>
+                    <h3>Centralized Recording</h3>
+                    <p>NVR/DVR systems with local and cloud storage, continuous or motion-based recording with 30+ days retention capability.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=500&h=300&fit=crop" alt="Monitoring" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">05</div>
+                    <h3>24/7 Remote Monitoring</h3>
+                    <p>Mobile app and web portal access for real-time monitoring from anywhere. Instant alerts and emergency response coordination.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop" alt="Maintenance" class="service-item-img">
+                <div class="service-item-content">
+                    <div class="service-item-number">06</div>
+                    <h3>Maintenance & Support</h3>
+                    <p>Regular system health checks, software updates, firmware upgrades, and 24/7 technical support for continuous operation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="features-list">
+            <h3>What We Offer</h3>
+            <ul>
+                <li>HD & 4K CCTV cameras with weatherproof design</li>
+                <li>PTZ (Pan-Tilt-Zoom) cameras for large areas</li>
+                <li>Thermal imaging for perimeter security</li>
+                <li>Professional structured cabling & installation</li>
+                <li>NVR/DVR systems with redundant storage</li>
+                <li>Cloud storage integration (AWS, Azure, local)</li>
+                <li>Motion detection & intelligent alerts</li>
+                <li>Facial recognition & person counting</li>
+                <li>Biometric access control systems</li>
+                <li>Time attendance tracking integration</li>
+                <li>Mobile app for remote monitoring</li>
+                <li>Incident recording & playback search tools</li>
+                <li>Integration with other security systems</li>
+                <li>System scalability for multi-site deployments</li>
+                <li>24/7 monitoring center services available</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Key Benefits</h2>
+        <div class="benefits-grid">
+            <div class="benefit">
+                <h4>Crime Deterrent</h4>
+                <p>Visible security reduces theft & intrusions by 70%</p>
+            </div>
+            <div class="benefit">
+                <h4>Evidence Collection</h4>
+                <p>Crystal clear footage for investigations</p>
+            </div>
+            <div class="benefit">
+                <h4>Employee Safety</h4>
+                <p>Monitor facilities for incidents & hazards</p>
+            </div>
+            <div class="benefit">
+                <h4>Real-Time Alerts</h4>
+                <p>Instant notifications on suspicious activity</p>
+            </div>
+            <div class="benefit">
+                <h4>Remote Access</h4>
+                <p>Monitor 24/7 from your phone or computer</p>
+            </div>
+            <div class="benefit">
+                <h4>Compliance Ready</h4>
+                <p>Meets regulatory & insurance requirements</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>How We Work</h2>
+        <div class="process">
+            <div class="process-step">
+                <div class="process-number">01</div>
+                <h4>Site Survey & Planning</h4>
+                <p>Assess facility layout and design optimal camera placement</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">02</div>
+                <h4>System Design</h4>
+                <p>Create custom security solution matching your requirements</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">03</div>
+                <h4>Professional Installation</h4>
+                <p>Deploy system with minimal disruption and full testing</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">04</div>
+                <h4>Training & Support</h4>
+                <p>Staff training and 24/7 technical support</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="cta-section">
+            <h2>Secure Your Facility Today</h2>
+            <p>Get a free site survey and security system proposal. Protect your business with professional surveillance solutions.</p>
+            <div class="hero-cta">
+                <a href="tel:+971501234567" class="btn btn-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="btn btn-white">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="other-services">
+            <h2>Explore Other Services</h2>
+            <div class="services-carousel">
+                <a href="service-network-security-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1563986768711-b43f2e5077ae?w=400&h=250&fit=crop" alt="Security">
+                    <h4>Network Security</h4>
+                    <p>Firewall & protection</p>
+                </a>
+                <a href="service-cloud-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop" alt="Cloud">
+                    <h4>Cloud Migration</h4>
+                    <p>Azure setup</p>
+                </a>
+                <a href="service-itsupport-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="IT Support">
+                    <h4>IT Support</h4>
+                    <p>24/7 help</p>
+                </a>
+                <a href="service-infrastructure-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop" alt="Infrastructure">
+                    <h4>Data Center</h4>
+                    <p>Server setup</p>
+                </a>
+                <a href="service-digital-new.html" class="service-mini-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=400&h=250&fit=crop" alt="Digital">
+                    <h4>Digital Solutions</h4>
+                    <p>Web & apps</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
+        <p>Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            localStorage.setItem('lang', lang);
+        }
+    </script>
+</body>
+</html>
