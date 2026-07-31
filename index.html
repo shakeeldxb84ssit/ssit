@@ -322,6 +322,17 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
+        .service-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+
+        .service-card-link:hover .service-card-body span {
+            color: #0077ed;
+        }
+
         .service-card-img-top {
             width: 100%;
             height: 200px;
@@ -347,7 +358,7 @@
             margin-bottom: 1.2rem;
         }
 
-        .service-card-body a {
+        .service-card-body span {
             color: #0071e3;
             text-decoration: none;
             font-weight: 600;
@@ -356,8 +367,9 @@
             transition: all 0.3s;
         }
 
-        .service-card-body a:hover {
+        .service-card-link:hover .service-card-body span {
             transform: translateX(5px);
+            color: #0077ed;
         }
 
         /* Trust Section */
@@ -652,70 +664,70 @@
             </div>
 
             <div class="services-grid">
-                <a href="service-network-security.html" style="text-decoration: none; color: inherit;">
-                <div class="service-card-img">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop" alt="Network Security" class="service-card-img-top">
-                    <div class="service-card-body">
-                        <h3 class="svc-title-1">Advanced Network Security</h3>
-                        <p class="svc-desc-1">Enterprise-grade firewalls, DDoS protection, and VPN solutions with real-time threat monitoring.</p>
-                        <a href="service-network-security.html" class="svc-link-1">Learn More →</a>
+                <a href="service-network-security.html" class="service-card-link">
+                    <div class="service-card-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop" alt="Network Security" class="service-card-img-top">
+                        <div class="service-card-body">
+                            <h3 class="svc-title-1">Advanced Network Security</h3>
+                            <p class="svc-desc-1">Enterprise-grade firewalls, DDoS protection, and VPN solutions with real-time threat monitoring.</p>
+                            <span class="svc-link-1">Learn More →</span>
+                        </div>
                     </div>
-                </div>
                 </a>
 
-                <a href="service-cloud.html" style="text-decoration: none; color: inherit;">
-                <div class="service-card-img">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Cloud Services" class="service-card-img-top">
-                    <div class="service-card-body">
-                        <h3 class="svc-title-2">Cloud & Azure Migration</h3>
-                        <p class="svc-desc-2">Seamless hybrid cloud setup, Microsoft 365 integration, and secure data management in the cloud.</p>
-                        <a href="service-cloud.html" class="svc-link-2">Learn More →</a>
+                <a href="service-cloud.html" class="service-card-link">
+                    <div class="service-card-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Cloud Services" class="service-card-img-top">
+                        <div class="service-card-body">
+                            <h3 class="svc-title-2">Cloud & Azure Migration</h3>
+                            <p class="svc-desc-2">Seamless hybrid cloud setup, Microsoft 365 integration, and secure data management in the cloud.</p>
+                            <span class="svc-link-2">Learn More →</span>
+                        </div>
                     </div>
-                </div>
                 </a>
 
-                <a href="service-cctv.html" style="text-decoration: none; color: inherit;">
-                <div class="service-card-img">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=500&h=300&fit=crop" alt="CCTV Systems" class="service-card-img-top">
-                    <div class="service-card-body">
-                        <h3 class="svc-title-3">Surveillance & Access Control</h3>
-                        <p class="svc-desc-3">Modern CCTV systems, biometric access, and integrated security monitoring solutions.</p>
-                        <a href="service-cctv.html" class="svc-link-3">Learn More →</a>
+                <a href="service-cctv.html" class="service-card-link">
+                    <div class="service-card-img">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f5bf172d886?w=500&h=300&fit=crop" alt="CCTV Systems" class="service-card-img-top">
+                        <div class="service-card-body">
+                            <h3 class="svc-title-3">Surveillance & Access Control</h3>
+                            <p class="svc-desc-3">Modern CCTV systems, biometric access, and integrated security monitoring solutions.</p>
+                            <span class="svc-link-3">Learn More →</span>
+                        </div>
                     </div>
-                </div>
                 </a>
 
-                <a href="service-itsupport.html" style="text-decoration: none; color: inherit;">
-                <div class="service-card-img">
-                    <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=500&h=300&fit=crop" alt="IT Support" class="service-card-img-top">
-                    <div class="service-card-body">
-                        <h3 class="svc-title-4">Managed IT Support</h3>
-                        <p class="svc-desc-4">Proactive monitoring, helpdesk support, and system maintenance 24/7 with rapid response times.</p>
-                        <a href="service-itsupport.html" class="svc-link-4">Learn More →</a>
+                <a href="service-itsupport.html" class="service-card-link">
+                    <div class="service-card-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=500&h=300&fit=crop" alt="IT Support" class="service-card-img-top">
+                        <div class="service-card-body">
+                            <h3 class="svc-title-4">Managed IT Support</h3>
+                            <p class="svc-desc-4">Proactive monitoring, helpdesk support, and system maintenance 24/7 with rapid response times.</p>
+                            <span class="svc-link-4">Learn More →</span>
+                        </div>
                     </div>
-                </div>
                 </a>
 
-                <a href="service-infrastructure.html" style="text-decoration: none; color: inherit;">
-                <div class="service-card-img">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Infrastructure" class="service-card-img-top">
-                    <div class="service-card-body">
-                        <h3 class="svc-title-5">Data Center Infrastructure</h3>
-                        <p class="svc-desc-5">Virtualization, server setup, storage solutions, and disaster recovery planning.</p>
-                        <a href="service-infrastructure.html" class="svc-link-5">Learn More →</a>
+                <a href="service-infrastructure.html" class="service-card-link">
+                    <div class="service-card-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Infrastructure" class="service-card-img-top">
+                        <div class="service-card-body">
+                            <h3 class="svc-title-5">Data Center Infrastructure</h3>
+                            <p class="svc-desc-5">Virtualization, server setup, storage solutions, and disaster recovery planning.</p>
+                            <span class="svc-link-5">Learn More →</span>
+                        </div>
                     </div>
-                </div>
                 </a>
 
-                <a href="service-digital.html" style="text-decoration: none; color: inherit;">
-                <div class="service-card-img">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop" alt="Web Development" class="service-card-img-top">
-                    <div class="service-card-body">
-                        <h3 class="svc-title-6">Digital Solutions</h3>
-                        <p class="svc-desc-6">Custom web development, SEO optimization, and digital marketing strategy for online growth.</p>
-                        <a href="service-digital.html" class="svc-link-6">Learn More →</a>
+                <a href="service-digital.html" class="service-card-link">
+                    <div class="service-card-img">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop" alt="Web Development" class="service-card-img-top">
+                        <div class="service-card-body">
+                            <h3 class="svc-title-6">Digital Solutions</h3>
+                            <p class="svc-desc-6">Custom web development, SEO optimization, and digital marketing strategy for online growth.</p>
+                            <span class="svc-link-6">Learn More →</span>
+                        </div>
                     </div>
-                </div>
                 </a>
             </div>
         </div>
