@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Solutions - SSIT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1d1d1d; background: #ffffff; }
+        body.ar { direction: rtl; }
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); padding: 0.5rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { height: 50px; text-decoration: none; display: flex; align-items: center; }
+        .logo img { height: 100%; width: auto; object-fit: contain; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #1d1d1d; text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        nav a:hover { opacity: 0.6; }
+        .lang-toggle { display: flex; background: #f5f5f7; border-radius: 8px; padding: 4px; gap: 4px; }
+        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; color: #6e6e73; }
+        .lang-btn.active { background: white; color: #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .service-hero { background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%); padding: 4rem 2rem; color: white; }
+        .hero-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-content h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero-content p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-image { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; }
+        .content-section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; color: #1d1d1d; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; align-items: center; }
+        .content-text h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0071e3; }
+        .content-text p { font-size: 1.05rem; color: #6e6e73; margin-bottom: 1.5rem; line-height: 1.7; }
+        .content-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; }
+        .features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .feature-item { padding: 1.5rem; background: #f5f5f7; border-radius: 8px; border-left: 4px solid #0071e3; }
+        .feature-item h4 { font-weight: 700; margin-bottom: 0.5rem; color: #1d1d1d; }
+        .feature-item p { font-size: 0.95rem; color: #6e6e73; }
+        .cta-section { background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%); padding: 4rem 2rem; text-align: center; color: white; }
+        .cta-inner { max-width: 800px; margin: 0 auto; }
+        .cta-section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.05rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
+        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .cta-button { display: inline-block; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .cta-white { background: white; color: #0071e3; }
+        .cta-white:hover { background: #f0f0f0; transform: translateY(-2px); }
+        .cta-outline { background: transparent; color: white; border: 2px solid white; }
+        .cta-outline:hover { background: rgba(255, 255, 255, 0.1); }
+        footer { background: #1d1d1d; color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { color: #a1a1a6; font-size: 0.9rem; margin: 0.5rem 0; }
+        @media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr; } .content-grid { grid-template-columns: 1fr; } .hero-content h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; } .features-list { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { nav ul { display: none; } .hero-content h1 { font-size: 2rem; } .hero-image { height: 250px; } .content-image { height: 250px; } .cta-section h2 { font-size: 1.8rem; } .cta-buttons { flex-direction: column; } .cta-button { width: 100%; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="logo.png" alt="SSIT Logo"></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="index.html#services" class="nav-services">Services</a></li>
+                    <li><a href="index.html#why" class="nav-why">Why Us</a></li>
+                    <li><a href="index.html#contact" class="nav-contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">English</button>
+                    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1 class="page-title">Digital Solutions</h1>
+                <p class="page-subtitle">Custom web development, SEO optimization, and digital marketing strategies to amplify your online presence and drive business growth.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Digital Solutions" class="hero-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title what-title">What are Digital Solutions?</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="what-heading">Transform Your Online Presence</h3>
+                <p class="what-desc1">Digital solutions encompass all services needed to establish, grow, and optimize your presence online—from custom websites and e-commerce platforms to SEO and digital marketing campaigns.</p>
+                <p class="what-desc2">In today's digital-first world, a strong online presence is essential for business success. Our solutions help you reach customers, build brand authority, and drive measurable results.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Digital Strategy" class="content-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title help-title">How SSIT Helps</h2>
+        <div class="content-grid" style="direction: ltr;">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f70674e90?w=600&h=400&fit=crop" alt="Web Development" class="content-image">
+            <div class="content-text">
+                <h3 class="help-heading">Comprehensive Digital Strategy</h3>
+                <p class="help-desc1">SSIT creates custom digital solutions that align with your business goals. From responsive website design to data-driven marketing campaigns, we help you succeed online.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="feature-1">Web Development</h4>
+                        <p class="feature-1-desc">Custom, responsive websites built for performance</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-2">E-commerce Solutions</h4>
+                        <p class="feature-2-desc">Secure online stores with payment processing</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-3">SEO Optimization</h4>
+                        <p class="feature-3-desc">On-page and technical SEO for search visibility</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-4">Digital Marketing</h4>
+                        <p class="feature-4-desc">Google Ads, social media, and content marketing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title manage-title">How We Manage & Deliver</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="manage-heading">Results-Driven Digital Services</h3>
+                <p class="manage-desc1">We take a strategic, data-driven approach to digital solutions. From initial strategy through design, development, and ongoing optimization, we focus on measurable results.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="manage-1">Strategy & Planning</h4>
+                        <p class="manage-1-desc">Market research and competitive analysis</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-2">Design & Development</h4>
+                        <p class="manage-2-desc">User-focused design with clean code</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-3">Launch & Testing</h4>
+                        <p class="manage-3-desc">Thorough QA and smooth deployment</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-4">Growth & Optimization</h4>
+                        <p class="manage-4-desc">Continuous monitoring and performance improvements</p>
+                    </div>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1460925895917-adf4e565db42?w=600&h=400&fit=crop" alt="Digital Growth" class="content-image">
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2 class="cta-title">Grow Your Online Presence</h2>
+            <p class="cta-desc">Let's build a digital strategy that drives real results for your business. Schedule a consultation with our digital experts.</p>
+            <div class="cta-buttons">
+                <a href="tel:+971501234567" class="cta-button cta-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="cta-button cta-white">💬 WhatsApp</a>
+                <a href="index.html#contact" class="cta-button cta-outline">← Back to Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text-1">&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
+        <p class="footer-text-2">Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                'nav-services': 'Services', 'nav-why': 'Why Us', 'nav-contact': 'Contact',
+                'page-title': 'Digital Solutions', 'page-subtitle': 'Web development, SEO, and digital marketing to grow your business.',
+                'what-title': 'What are Digital Solutions?', 'what-heading': 'Transform Your Online Presence',
+                'what-desc1': 'Services to establish, grow, and optimize your online presence.',
+                'what-desc2': 'We help you reach customers, build authority, and drive results.',
+                'help-title': 'How SSIT Helps', 'help-heading': 'Comprehensive Digital Strategy',
+                'help-desc1': 'We create custom digital solutions aligned with your business goals.',
+                'feature-1': 'Web Development', 'feature-1-desc': 'Custom, responsive websites',
+                'feature-2': 'E-commerce Solutions', 'feature-2-desc': 'Secure online stores',
+                'feature-3': 'SEO Optimization', 'feature-3-desc': 'On-page and technical SEO',
+                'feature-4': 'Digital Marketing', 'feature-4-desc': 'Google Ads and social media',
+                'manage-title': 'How We Manage & Deliver', 'manage-heading': 'Results-Driven Services',
+                'manage-desc1': 'Data-driven approach focused on measurable results.',
+                'manage-1': 'Strategy & Planning', 'manage-1-desc': 'Market research and analysis',
+                'manage-2': 'Design & Development', 'manage-2-desc': 'User-focused design',
+                'manage-3': 'Launch & Testing', 'manage-3-desc': 'QA and smooth deployment',
+                'manage-4': 'Growth & Optimization', 'manage-4-desc': 'Continuous improvement',
+                'cta-title': 'Grow Your Online Presence', 'cta-desc': 'Build a strategy that drives results.',
+                'footer-text-1': '© 2024 SSIT - Enterprise IT Solutions & Support Services',
+                'footer-text-2': 'Serving Dubai | Abu Dhabi | Sharjah | Ajman'
+            },
+            ar: {
+                'nav-services': 'الخدمات', 'nav-why': 'لماذا نحن', 'nav-contact': 'اتصل بنا',
+                'page-title': 'الحلول الرقمية', 'page-subtitle': 'تطوير ويب و SEO والتسويق الرقمي.',
+                'what-title': 'ما هي الحلول الرقمية؟', 'what-heading': 'حول وجودك على الإنترنت',
+                'what-desc1': 'خدمات لإنشاء وتنمية وجودك على الإنترنت.',
+                'what-desc2': 'نساعدك على الوصول للعملاء وبناء السلطة.',
+                'help-title': 'كيف تساعد SSIT', 'help-heading': 'استراتيجية رقمية شاملة',
+                'help-desc1': 'نقوم بإنشاء حلول رقمية مخصصة.',
+                'feature-1': 'تطوير الويب', 'feature-1-desc': 'مواقع مخصصة وسريعة',
+                'feature-2': 'حلول التجارة الإلكترونية', 'feature-2-desc': 'متاجر آمنة على الإنترنت',
+                'feature-3': 'تحسين SEO', 'feature-3-desc': 'SEO على الصفحة والتقني',
+                'feature-4': 'التسويق الرقمي', 'feature-4-desc': 'Google Ads والوسائط الاجتماعية',
+                'manage-title': 'كيف ندير وننجز', 'manage-heading': 'خدمات تركز على النتائج',
+                'manage-desc1': 'نهج قائم على البيانات يركز على النتائج.',
+                'manage-1': 'الاستراتيجية والتخطيط', 'manage-1-desc': 'أبحاث السوق والتحليل',
+                'manage-2': 'التصميم والتطوير', 'manage-2-desc': 'تصميم موجه نحو المستخدم',
+                'manage-3': 'الإطلاق والاختبار', 'manage-3-desc': 'ضمان الجودة والنشر السلس',
+                'manage-4': 'النمو والتحسين', 'manage-4-desc': 'التحسين المستمر',
+                'cta-title': 'نمّ وجودك على الإنترنت', 'cta-desc': 'بناء استراتيجية تعطي نتائج.',
+                'footer-text-1': '© 2024 SSIT - حلول تكنولوجيا المعلومات',
+                'footer-text-2': 'نخدم دبي | أبو ظبي | الشارقة | عجمان'
+            }
+        };
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const html = document.documentElement;
+            html.lang = lang;
+            const body = document.body;
+            if (lang === 'ar') { body.classList.add('ar'); } else { body.classList.remove('ar'); }
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll('.' + key);
+                elements.forEach(el => { el.textContent = translations[lang][key]; });
+            });
+            localStorage.setItem('lang', lang);
+        }
+        const savedLang = localStorage.getItem('lang') || 'en';
+        if (savedLang === 'ar') { document.body.classList.add('ar'); }
+        setLang(savedLang);
+    </script>
+</body>
+</html>

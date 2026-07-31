@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Center Infrastructure - SSIT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1d1d1d; background: #ffffff; }
+        body.ar { direction: rtl; }
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); padding: 0.5rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+        .logo { height: 50px; text-decoration: none; display: flex; align-items: center; }
+        .logo img { height: 100%; width: auto; object-fit: contain; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #1d1d1d; text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        nav a:hover { opacity: 0.6; }
+        .lang-toggle { display: flex; background: #f5f5f7; border-radius: 8px; padding: 4px; gap: 4px; }
+        .lang-btn { background: transparent; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-radius: 6px; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; color: #6e6e73; }
+        .lang-btn.active { background: white; color: #0071e3; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+        .service-hero { background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%); padding: 4rem 2rem; color: white; }
+        .hero-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .hero-content h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero-content p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-image { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; }
+        .content-section { max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; color: #1d1d1d; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; align-items: center; }
+        .content-text h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0071e3; }
+        .content-text p { font-size: 1.05rem; color: #6e6e73; margin-bottom: 1.5rem; line-height: 1.7; }
+        .content-image { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; }
+        .features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .feature-item { padding: 1.5rem; background: #f5f5f7; border-radius: 8px; border-left: 4px solid #0071e3; }
+        .feature-item h4 { font-weight: 700; margin-bottom: 0.5rem; color: #1d1d1d; }
+        .feature-item p { font-size: 0.95rem; color: #6e6e73; }
+        .cta-section { background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%); padding: 4rem 2rem; text-align: center; color: white; }
+        .cta-inner { max-width: 800px; margin: 0 auto; }
+        .cta-section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.05rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
+        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .cta-button { display: inline-block; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; }
+        .cta-white { background: white; color: #0071e3; }
+        .cta-white:hover { background: #f0f0f0; transform: translateY(-2px); }
+        .cta-outline { background: transparent; color: white; border: 2px solid white; }
+        .cta-outline:hover { background: rgba(255, 255, 255, 0.1); }
+        footer { background: #1d1d1d; color: white; padding: 3rem 2rem; text-align: center; }
+        footer p { color: #a1a1a6; font-size: 0.9rem; margin: 0.5rem 0; }
+        @media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr; } .content-grid { grid-template-columns: 1fr; } .hero-content h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; } .features-list { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { nav ul { display: none; } .hero-content h1 { font-size: 2rem; } .hero-image { height: 250px; } .content-image { height: 250px; } .cta-section h2 { font-size: 1.8rem; } .cta-buttons { flex-direction: column; } .cta-button { width: 100%; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="logo.png" alt="SSIT Logo"></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="index.html#services" class="nav-services">Services</a></li>
+                    <li><a href="index.html#why" class="nav-why">Why Us</a></li>
+                    <li><a href="index.html#contact" class="nav-contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">English</button>
+                    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1 class="page-title">Data Center Infrastructure</h1>
+                <p class="page-subtitle">Enterprise-grade server infrastructure, virtualization, storage solutions, and disaster recovery planning for mission-critical operations.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Data Center" class="hero-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title what-title">What is Data Center Infrastructure?</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="what-heading">Foundation for Your Business Operations</h3>
+                <p class="what-desc1">Data center infrastructure is the backbone of your IT operations—servers, storage systems, networking equipment, and backup systems all working together to support your applications and data.</p>
+                <p class="what-desc2">A well-designed infrastructure ensures reliability, scalability, security, and fast recovery from any disruption to business continuity.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1563986768711-b43f2e5077ae?w=600&h=400&fit=crop" alt="Infrastructure" class="content-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title help-title">How SSIT Helps</h2>
+        <div class="content-grid" style="direction: ltr;">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f70674e90?w=600&h=400&fit=crop" alt="Server Setup" class="content-image">
+            <div class="content-text">
+                <h3 class="help-heading">Complete Infrastructure Solutions</h3>
+                <p class="help-desc1">SSIT designs, deploys, and manages robust data center infrastructure that scales with your business while maintaining maximum uptime and security.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="feature-1">Server Setup</h4>
+                        <p class="feature-1-desc">Enterprise servers configured for optimal performance</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-2">Virtualization</h4>
+                        <p class="feature-2-desc">VMware infrastructure for efficient resource utilization</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-3">Storage Solutions</h4>
+                        <p class="feature-3-desc">High-performance SAN and backup storage systems</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-4">Disaster Recovery</h4>
+                        <p class="feature-4-desc">Comprehensive backup and recovery planning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title manage-title">How We Manage & Deliver</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="manage-heading">Scalable, Reliable Operations</h3>
+                <p class="manage-desc1">We provide end-to-end infrastructure management from initial design and implementation to ongoing optimization and growth planning.</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="manage-1">Architecture Design</h4>
+                        <p class="manage-1-desc">Tailored infrastructure design for your requirements</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-2">Implementation</h4>
+                        <p class="manage-2-desc">Professional installation with minimal downtime</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-3">Performance Tuning</h4>
+                        <p class="manage-3-desc">Continuous optimization for peak performance</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-4">Capacity Planning</h4>
+                        <p class="manage-4-desc">Planning for future growth and scalability</p>
+                    </div>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Infrastructure Management" class="content-image">
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2 class="cta-title">Build Robust Infrastructure</h2>
+            <p class="cta-desc">Let our infrastructure experts design and deploy a data center solution tailored to your business needs.</p>
+            <div class="cta-buttons">
+                <a href="tel:+971501234567" class="cta-button cta-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="cta-button cta-white">💬 WhatsApp</a>
+                <a href="index.html#contact" class="cta-button cta-outline">← Back to Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text-1">&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
+        <p class="footer-text-2">Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                'nav-services': 'Services', 'nav-why': 'Why Us', 'nav-contact': 'Contact',
+                'page-title': 'Data Center Infrastructure', 'page-subtitle': 'Enterprise servers, virtualization, and disaster recovery planning.',
+                'what-title': 'What is Data Center Infrastructure?', 'what-heading': 'Foundation for Your Business',
+                'what-desc1': 'The backbone of IT operations—servers, storage, networking, and backup systems.',
+                'what-desc2': 'Well-designed infrastructure ensures reliability, scalability, and recovery.',
+                'help-title': 'How SSIT Helps', 'help-heading': 'Complete Infrastructure Solutions',
+                'help-desc1': 'We design, deploy, and manage robust data center infrastructure.',
+                'feature-1': 'Server Setup', 'feature-1-desc': 'Enterprise servers for optimal performance',
+                'feature-2': 'Virtualization', 'feature-2-desc': 'VMware infrastructure for efficiency',
+                'feature-3': 'Storage Solutions', 'feature-3-desc': 'High-performance SAN systems',
+                'feature-4': 'Disaster Recovery', 'feature-4-desc': 'Comprehensive backup planning',
+                'manage-title': 'How We Manage & Deliver', 'manage-heading': 'Scalable, Reliable Operations',
+                'manage-desc1': 'End-to-end management from design to optimization.',
+                'manage-1': 'Architecture Design', 'manage-1-desc': 'Tailored design for your needs',
+                'manage-2': 'Implementation', 'manage-2-desc': 'Professional installation',
+                'manage-3': 'Performance Tuning', 'manage-3-desc': 'Continuous optimization',
+                'manage-4': 'Capacity Planning', 'manage-4-desc': 'Planning for future growth',
+                'cta-title': 'Build Robust Infrastructure', 'cta-desc': 'Let experts design your data center.',
+                'footer-text-1': '© 2024 SSIT - Enterprise IT Solutions & Support Services',
+                'footer-text-2': 'Serving Dubai | Abu Dhabi | Sharjah | Ajman'
+            },
+            ar: {
+                'nav-services': 'الخدمات', 'nav-why': 'لماذا نحن', 'nav-contact': 'اتصل بنا',
+                'page-title': 'بنية مركز البيانات', 'page-subtitle': 'خوادم المؤسسة والمحاكاة والاسترجاع.',
+                'what-title': 'ما هي بنية مركز البيانات؟', 'what-heading': 'أساس عملك',
+                'what-desc1': 'العمود الفقري—الخوادم والتخزين والشبكات.',
+                'what-desc2': 'البنية المصممة جيداً توفر الموثوقية والقابلية للتوسع.',
+                'help-title': 'كيف تساعد SSIT', 'help-heading': 'حلول بنية شاملة',
+                'help-desc1': 'نصمم وننشر وندير بنية مركز بيانات قوية.',
+                'feature-1': 'إعداد الخادم', 'feature-1-desc': 'خوادم مؤسسية للأداء الأمثل',
+                'feature-2': 'المحاكاة الافتراضية', 'feature-2-desc': 'بنية VMware للكفاءة',
+                'feature-3': 'حلول التخزين', 'feature-3-desc': 'أنظمة SAN عالية الأداء',
+                'feature-4': 'استرجاع الكوارث', 'feature-4-desc': 'تخطيط النسخ الاحتياطي الشامل',
+                'manage-title': 'كيف ندير وننجز', 'manage-heading': 'عمليات قابلة للتوسع وموثوقة',
+                'manage-desc1': 'إدارة شاملة من التصميم إلى التحسين.',
+                'manage-1': 'تصميم العمارة', 'manage-1-desc': 'التصميم الموصوف لاحتياجاتك',
+                'manage-2': 'التنفيذ', 'manage-2-desc': 'التثبيت الاحترافي',
+                'manage-3': 'ضبط الأداء', 'manage-3-desc': 'التحسين المستمر',
+                'manage-4': 'تخطيط السعة', 'manage-4-desc': 'التخطيط للنمو المستقبلي',
+                'cta-title': 'بناء بنية قوية', 'cta-desc': 'دع الخبراء يصممون مركز البيانات الخاص بك.',
+                'footer-text-1': '© 2024 SSIT - حلول تكنولوجيا المعلومات',
+                'footer-text-2': 'نخدم دبي | أبو ظبي | الشارقة | عجمان'
+            }
+        };
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const html = document.documentElement;
+            html.lang = lang;
+            const body = document.body;
+            if (lang === 'ar') { body.classList.add('ar'); } else { body.classList.remove('ar'); }
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll('.' + key);
+                elements.forEach(el => { el.textContent = translations[lang][key]; });
+            });
+            localStorage.setItem('lang', lang);
+        }
+        const savedLang = localStorage.getItem('lang') || 'en';
+        if (savedLang === 'ar') { document.body.classList.add('ar'); }
+        setLang(savedLang);
+    </script>
+</body>
+</html>
