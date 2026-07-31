@@ -121,9 +121,11 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 3rem;
             align-items: center;
+            padding: 4rem 2rem;
+            width: 100%;
         }
 
         .hero-content h1 {
@@ -456,14 +458,13 @@
         </nav>
     </header>
 
-    <!-- Service Hero -->
-    <section class="service-hero">
+    <!-- Service Hero with Parallax Background -->
+    <section class="service-hero" style="background: linear-gradient(135deg, rgba(29, 29, 29, 0.85) 0%, rgba(45, 45, 45, 0.85) 100%), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&fit=crop') center/cover fixed; min-height: 60vh; display: flex; align-items: center;">
         <div class="hero-inner">
             <div class="hero-content">
                 <h1 class="page-title">Advanced Network Security</h1>
                 <p class="page-subtitle">Protect your business with enterprise-grade firewall solutions, real-time threat detection, and comprehensive DDoS protection.</p>
             </div>
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="Network Security" class="hero-image">
         </div>
     </section>
 
