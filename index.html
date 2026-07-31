@@ -22,6 +22,11 @@
             background: #ffffff;
         }
 
+        body.ar {
+            direction: rtl;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Traditional Arabic', Helvetica, Arial, sans-serif;
+        }
+
         /* Header & Navigation */
         header {
             background: rgba(255, 255, 255, 0.95);
@@ -50,6 +55,12 @@
             letter-spacing: -0.5px;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
@@ -66,6 +77,38 @@
 
         nav a:hover {
             opacity: 0.6;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            background: #f5f5f7;
+            border-radius: 8px;
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            color: #6e6e73;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #0071e3;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Hidden Content */
+        .hidden {
+            display: none;
         }
 
         /* Hero Section */
@@ -142,13 +185,6 @@
             color: white;
         }
 
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
         /* Service Hero Sections */
         .service-hero {
             padding: 6rem 2rem;
@@ -170,6 +206,14 @@
 
         .service-hero:nth-child(even) .service-visual {
             order: 1;
+        }
+
+        body.ar .service-hero:nth-child(even) .service-content {
+            order: 1;
+        }
+
+        body.ar .service-hero:nth-child(even) .service-visual {
+            order: 2;
         }
 
         .service-content h2 {
@@ -198,6 +242,44 @@
             justify-content: center;
             font-size: 4rem;
             color: #a1a1a6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #1d1d1d;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #6e6e73;
+            line-height: 1.6;
         }
 
         /* Features Grid */
@@ -268,63 +350,19 @@
             font-weight: 700;
             color: #0071e3;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
         }
 
         .stat-item p {
-            font-size: 1.1rem;
-            color: #6e6e73;
-            font-weight: 500;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 6rem 2rem;
-            background: white;
-        }
-
-        .service-card {
-            background: #f5f5f7;
-            padding: 2.5rem;
-            border-radius: 18px;
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            background: #ebebf0;
-            transform: translateY(-8px);
-        }
-
-        .service-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1d1d1d;
-            letter-spacing: -0.3px;
-        }
-
-        .service-card p {
-            color: #6e6e73;
             font-size: 1rem;
-            line-height: 1.6;
-            font-weight: 400;
+            color: #6e6e73;
         }
 
         /* Contact Section */
         .contact-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 8rem 2rem;
             text-align: center;
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .contact-content {
@@ -332,7 +370,7 @@
             margin: 0 auto;
         }
 
-        .contact-section h2 {
+        .contact-content h2 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -340,38 +378,40 @@
             color: #1d1d1d;
         }
 
-        .contact-section p {
+        .contact-content p {
             font-size: 1.2rem;
             color: #6e6e73;
             margin-bottom: 2.5rem;
-            font-weight: 400;
             line-height: 1.6;
         }
 
         .contact-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
         .contact-link {
-            font-size: 1.1rem;
+            display: inline-block;
+            padding: 0.9rem 1.5rem;
+            background: #f5f5f7;
             color: #0071e3;
             text-decoration: none;
+            border-radius: 10px;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
         }
 
         .contact-link:hover {
-            opacity: 0.6;
+            background: #0071e3;
+            color: white;
         }
 
         /* Footer */
         footer {
             background: #f5f5f7;
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
@@ -379,37 +419,13 @@
         footer p {
             color: #6e6e73;
             font-size: 0.95rem;
-            font-weight: 400;
-        }
-
-        footer p:not(:last-child) {
-            margin-bottom: 0.5rem;
+            margin: 0.5rem 0;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .service-hero {
-                grid-template-columns: 1fr;
-            }
-
-            .service-hero:nth-child(even) .service-content {
-                order: unset;
-            }
-
-            .service-hero:nth-child(even) .service-visual {
-                order: unset;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
             }
 
             .service-content h2 {
@@ -455,6 +471,28 @@
 
             .service-hero {
                 padding: 4rem 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-hero:nth-child(even) .service-content {
+                order: 1;
+            }
+
+            .service-hero:nth-child(even) .service-visual {
+                order: 2;
+            }
+
+            body.ar .service-hero:nth-child(even) .service-content {
+                order: 1;
+            }
+
+            body.ar .service-hero:nth-child(even) .service-visual {
+                order: 2;
+            }
+
+            .contact-content h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -464,22 +502,28 @@
     <header>
         <nav>
             <a href="#home" class="logo">SSIT</a>
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why">Why SSIT</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#services" class="nav-services">Services</a></li>
+                    <li><a href="#why" class="nav-why">Why SSIT</a></li>
+                    <li><a href="#contact" class="nav-contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">English</button>
+                    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+                </div>
+            </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Enterprise IT Solutions</h1>
-            <p>Infrastructure, Security, and Digital Services Built for Scale</p>
+            <h1 class="hero-title">Enterprise IT Solutions</h1>
+            <p class="hero-desc">Infrastructure, Security, and Digital Services Built for Scale</p>
             <div class="hero-cta">
-                <a href="#contact" class="cta-button cta-primary">Get Started</a>
-                <a href="#services" class="cta-button cta-secondary">Learn More</a>
+                <a href="#contact" class="cta-button cta-primary btn-started">Get Started</a>
+                <a href="#services" class="cta-button cta-secondary btn-learn">Learn More</a>
             </div>
         </div>
     </section>
@@ -487,8 +531,8 @@
     <!-- Service 1 Hero -->
     <section class="service-hero">
         <div class="service-content">
-            <h2>Network Security</h2>
-            <p>Enterprise-grade firewalls with FortiGate and SonicWall. Advanced threat protection, VPN solutions, and comprehensive security policies.</p>
+            <h2 class="svc1-title">Network Security</h2>
+            <p class="svc1-desc">Enterprise-grade firewalls with FortiGate and SonicWall. Advanced threat protection, VPN solutions, and comprehensive security policies.</p>
             <a href="#contact" class="cta-button cta-primary">Explore</a>
         </div>
         <div class="service-visual">🛡️</div>
@@ -497,8 +541,8 @@
     <!-- Service 2 Hero -->
     <section class="service-hero">
         <div class="service-content">
-            <h2>Cloud & Microsoft 365</h2>
-            <p>Azure AD sync, hybrid identity management, and Microsoft 365 optimization. Seamless integration with on-premises infrastructure.</p>
+            <h2 class="svc2-title">Cloud & Microsoft 365</h2>
+            <p class="svc2-desc">Azure AD sync, hybrid identity management, and Microsoft 365 optimization. Seamless integration with on-premises infrastructure.</p>
             <a href="#contact" class="cta-button cta-primary">Explore</a>
         </div>
         <div class="service-visual">☁️</div>
@@ -507,8 +551,8 @@
     <!-- Service 3 Hero -->
     <section class="service-hero">
         <div class="service-content">
-            <h2>CCTV & Access Control</h2>
-            <p>Modern video surveillance, biometric access systems, and integrated security solutions. Complete visibility and control.</p>
+            <h2 class="svc3-title">CCTV & Access Control</h2>
+            <p class="svc3-desc">Modern video surveillance, biometric access systems, and integrated security solutions. Complete visibility and control.</p>
             <a href="#contact" class="cta-button cta-primary">Explore</a>
         </div>
         <div class="service-visual">📹</div>
@@ -517,8 +561,8 @@
     <!-- Service 4 Hero -->
     <section class="service-hero">
         <div class="service-content">
-            <h2>VoIP & Communications</h2>
-            <p>Grandstream UCM unified communications, IP phone systems, and call recording. Enterprise-grade voice solutions.</p>
+            <h2 class="svc4-title">VoIP & Communications</h2>
+            <p class="svc4-desc">Grandstream UCM unified communications, IP phone systems, and call recording. Enterprise-grade voice solutions.</p>
             <a href="#contact" class="cta-button cta-primary">Explore</a>
         </div>
         <div class="service-visual">📞</div>
@@ -528,79 +572,79 @@
     <div class="services-grid" id="services">
         <div class="service-card">
             <div class="icon">🔐</div>
-            <h3>Virtualization</h3>
-            <p>VMware infrastructure, high availability, and scalable virtual environments for your data center.</p>
+            <h3 class="svc-grid-1">Virtualization</h3>
+            <p class="svc-grid-1-desc">VMware infrastructure, high availability, and scalable virtual environments for your data center.</p>
         </div>
 
         <div class="service-card">
             <div class="icon">🌐</div>
-            <h3>Web Development</h3>
-            <p>Modern, responsive websites and custom applications designed for performance and user experience.</p>
+            <h3 class="svc-grid-2">Web Development</h3>
+            <p class="svc-grid-2-desc">Modern, responsive websites and custom applications designed for performance and user experience.</p>
         </div>
 
         <div class="service-card">
             <div class="icon">📊</div>
-            <h3>Digital Marketing</h3>
-            <p>SEO, Google Ads, social media strategy, and analytics to amplify your online presence.</p>
+            <h3 class="svc-grid-3">Digital Marketing</h3>
+            <p class="svc-grid-3-desc">SEO, Google Ads, social media strategy, and analytics to amplify your online presence.</p>
         </div>
 
         <div class="service-card">
             <div class="icon">🔧</div>
-            <h3>IT Support</h3>
-            <p>24/7 helpdesk, system maintenance, and proactive monitoring for uninterrupted operations.</p>
+            <h3 class="svc-grid-4">IT Support</h3>
+            <p class="svc-grid-4-desc">24/7 helpdesk, system maintenance, and proactive monitoring for uninterrupted operations.</p>
         </div>
 
         <div class="service-card">
             <div class="icon">💡</div>
-            <h3>Consulting</h3>
-            <p>Strategic technology planning, digital transformation, and infrastructure roadmaps.</p>
+            <h3 class="svc-grid-5">Consulting</h3>
+            <p class="svc-grid-5-desc">Strategic technology planning, digital transformation, and infrastructure roadmaps.</p>
         </div>
 
         <div class="service-card">
             <div class="icon">⚙️</div>
-            <h3>Managed Services</h3>
-            <p>Comprehensive monitoring, maintenance, and optimization of your entire IT environment.</p>
+            <h3 class="svc-grid-6">Managed Services</h3>
+            <p class="svc-grid-6-desc">Comprehensive monitoring, maintenance, and optimization of your entire IT environment.</p>
         </div>
     </div>
 
     <!-- Why Choose Us -->
     <section class="features-section" id="why">
-        <h2 class="section-title">Why Choose SSIT</h2>
+        <h2 class="section-title why-title">Why Choose SSIT</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">👨‍💼</div>
-                <h3>Expert Team</h3>
-                <p>18+ years of enterprise IT infrastructure and security expertise across all major technologies.</p>
+                <h3 class="why-1">Expert Team</h3>
+                <p class="why-1-desc">18+ years of enterprise IT infrastructure and security expertise across all major technologies.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🏆</div>
-                <h3>Proven Track Record</h3>
-                <p>Trusted by businesses across the UAE for reliable, scalable solutions that deliver results.</p>
+                <h3 class="why-2">Proven Track Record</h3>
+                <p class="why-2-desc">Trusted by businesses across the UAE for reliable, scalable solutions that deliver results.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
-                <h3>Security First</h3>
-                <p>Enterprise-grade security protocols and best practices protecting your data and infrastructure.</p>
+                <h3 class="why-3">Security First</h3>
+                <p class="why-3-desc">Enterprise-grade security protocols and best practices protecting your data and infrastructure.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🚀</div>
-                <h3>24/7 Support</h3>
-                <p>Round-the-clock monitoring and responsive support ensuring zero downtime for your systems.</p>
+                <h3 class="why-4">24/7 Support</h3>
+                <p class="why-4-desc">Round-the-clock monitoring and responsive support ensuring zero downtime for your systems.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">📈</div>
-                <h3>Scalable Solutions</h3>
-                <p>Infrastructure that grows with your business, from startups to large enterprises.</p>
+                <h3 class="why-5">Scalable Solutions</h3>
+                <p class="why-5-desc">Infrastructure that grows with your business, from startups to large enterprises.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">💰</div>
-                <h3>Cost Effective</h3>
-                <p>Optimized solutions delivering maximum value without compromising quality and performance.</p>
+                <h3 class="why-6">Cost Effective</h3>
+                <p class="why-6-desc">Optimized solutions delivering maximum value without compromising quality and performance.</p>
             </div>
         </div>
     </section>
@@ -610,19 +654,19 @@
         <div class="stats-grid">
             <div class="stat-item">
                 <h3>18+</h3>
-                <p>Years of Experience</p>
+                <p class="stat-1">Years of Experience</p>
             </div>
             <div class="stat-item">
                 <h3>500+</h3>
-                <p>Successful Projects</p>
+                <p class="stat-2">Successful Projects</p>
             </div>
             <div class="stat-item">
                 <h3>4</h3>
-                <p>UAE Emirates Served</p>
+                <p class="stat-3">UAE Emirates Served</p>
             </div>
             <div class="stat-item">
                 <h3>99.9%</h3>
-                <p>Uptime Guarantee</p>
+                <p class="stat-4">Uptime Guarantee</p>
             </div>
         </div>
     </section>
@@ -630,23 +674,164 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="contact-content">
-            <h2>Get in Touch</h2>
-            <p>Ready to transform your IT infrastructure? Let's discuss how SSIT can help your business succeed.</p>
+            <h2 class="contact-title">Get in Touch</h2>
+            <p class="contact-desc">Ready to transform your IT infrastructure? Let's discuss how SSIT can help your business succeed.</p>
             <div class="contact-links">
-                <a href="mailto:info@ssit.ae" class="contact-link">✉️ Email us</a>
-                <a href="tel:+971" class="contact-link">📞 Call us</a>
-                <a href="#" class="contact-link">💬 Schedule a consultation</a>
+                <a href="mailto:info@ssit.ae" class="contact-link email-link">✉️ Email us</a>
+                <a href="tel:+971501234567" class="contact-link phone-link">📞 Call us</a>
+                <a href="https://wa.me/971501234567" class="contact-link whatsapp-link">💬 WhatsApp</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 SSIT - IT Solutions & Support Services</p>
-        <p>Dubai | Abu Dhabi | Sharjah | Ajman</p>
+        <p class="footer-1">&copy; 2024 SSIT - IT Solutions & Support Services</p>
+        <p class="footer-2">Dubai | Abu Dhabi | Sharjah | Ajman</p>
     </footer>
 
     <script>
+        // Bilingual Content
+        const translations = {
+            en: {
+                'nav-services': 'Services',
+                'nav-why': 'Why SSIT',
+                'nav-contact': 'Contact',
+                'btn-started': 'Get Started',
+                'btn-learn': 'Learn More',
+                'hero-title': 'Enterprise IT Solutions',
+                'hero-desc': 'Infrastructure, Security, and Digital Services Built for Scale',
+                'svc1-title': 'Network Security',
+                'svc1-desc': 'Enterprise-grade firewalls with FortiGate and SonicWall. Advanced threat protection, VPN solutions, and comprehensive security policies.',
+                'svc2-title': 'Cloud & Microsoft 365',
+                'svc2-desc': 'Azure AD sync, hybrid identity management, and Microsoft 365 optimization. Seamless integration with on-premises infrastructure.',
+                'svc3-title': 'CCTV & Access Control',
+                'svc3-desc': 'Modern video surveillance, biometric access systems, and integrated security solutions. Complete visibility and control.',
+                'svc4-title': 'VoIP & Communications',
+                'svc4-desc': 'Grandstream UCM unified communications, IP phone systems, and call recording. Enterprise-grade voice solutions.',
+                'svc-grid-1': 'Virtualization',
+                'svc-grid-1-desc': 'VMware infrastructure, high availability, and scalable virtual environments for your data center.',
+                'svc-grid-2': 'Web Development',
+                'svc-grid-2-desc': 'Modern, responsive websites and custom applications designed for performance and user experience.',
+                'svc-grid-3': 'Digital Marketing',
+                'svc-grid-3-desc': 'SEO, Google Ads, social media strategy, and analytics to amplify your online presence.',
+                'svc-grid-4': 'IT Support',
+                'svc-grid-4-desc': '24/7 helpdesk, system maintenance, and proactive monitoring for uninterrupted operations.',
+                'svc-grid-5': 'Consulting',
+                'svc-grid-5-desc': 'Strategic technology planning, digital transformation, and infrastructure roadmaps.',
+                'svc-grid-6': 'Managed Services',
+                'svc-grid-6-desc': 'Comprehensive monitoring, maintenance, and optimization of your entire IT environment.',
+                'why-title': 'Why Choose SSIT',
+                'why-1': 'Expert Team',
+                'why-1-desc': '18+ years of enterprise IT infrastructure and security expertise across all major technologies.',
+                'why-2': 'Proven Track Record',
+                'why-2-desc': 'Trusted by businesses across the UAE for reliable, scalable solutions that deliver results.',
+                'why-3': 'Security First',
+                'why-3-desc': 'Enterprise-grade security protocols and best practices protecting your data and infrastructure.',
+                'why-4': '24/7 Support',
+                'why-4-desc': 'Round-the-clock monitoring and responsive support ensuring zero downtime for your systems.',
+                'why-5': 'Scalable Solutions',
+                'why-5-desc': 'Infrastructure that grows with your business, from startups to large enterprises.',
+                'why-6': 'Cost Effective',
+                'why-6-desc': 'Optimized solutions delivering maximum value without compromising quality and performance.',
+                'stat-1': 'Years of Experience',
+                'stat-2': 'Successful Projects',
+                'stat-3': 'UAE Emirates Served',
+                'stat-4': 'Uptime Guarantee',
+                'contact-title': 'Get in Touch',
+                'contact-desc': 'Ready to transform your IT infrastructure? Let\'s discuss how SSIT can help your business succeed.',
+                'email-link': '✉️ Email us',
+                'phone-link': '📞 Call us',
+                'whatsapp-link': '💬 WhatsApp',
+                'footer-1': '© 2024 SSIT - IT Solutions & Support Services',
+                'footer-2': 'Dubai | Abu Dhabi | Sharjah | Ajman'
+            },
+            ar: {
+                'nav-services': 'الخدمات',
+                'nav-why': 'لماذا SSIT',
+                'nav-contact': 'اتصل بنا',
+                'btn-started': 'ابدأ الآن',
+                'btn-learn': 'اعرف أكثر',
+                'hero-title': 'حلول تكنولوجيا المعلومات للمؤسسات',
+                'hero-desc': 'البنية الأساسية والأمان والخدمات الرقمية المصممة للتوسع',
+                'svc1-title': 'أمان الشبكة',
+                'svc1-desc': 'جدران حماية متقدمة مع FortiGate و SonicWall. حماية متقدمة من التهديدات وحلول VPN والسياسات الأمنية الشاملة.',
+                'svc2-title': 'السحابة و Microsoft 365',
+                'svc2-desc': 'مزامنة Azure AD وإدارة الهوية الهجينة وتحسين Microsoft 365. التكامل السلس مع البنية الأساسية المحلية.',
+                'svc3-title': 'CCTV والتحكم في الوصول',
+                'svc3-desc': 'المراقبة بالفيديو الحديثة وأنظمة الوصول البيومترية والحلول الأمنية المتكاملة. الرؤية والتحكم الكاملان.',
+                'svc4-title': 'VoIP والاتصالات',
+                'svc4-desc': 'Grandstream UCM والاتصالات الموحدة وأنظمة الهاتف IP وتسجيل المكالمات. حلول صوتية على مستوى المؤسسة.',
+                'svc-grid-1': 'المحاكاة الافتراضية',
+                'svc-grid-1-desc': 'بنية VMware والتوفر العالي والبيئات الافتراضية القابلة للتوسع لمركز البيانات الخاص بك.',
+                'svc-grid-2': 'تطوير الويب',
+                'svc-grid-2-desc': 'مواقع حديثة سريعة الاستجابة وتطبيقات مخصصة مصممة للأداء وتجربة المستخدم.',
+                'svc-grid-3': 'التسويق الرقمي',
+                'svc-grid-3-desc': 'تحسين محركات البحث والإعلانات والإعلانات وإستراتيجية الوسائط الاجتماعية والتحليلات.',
+                'svc-grid-4': 'دعم تكنولوجيا المعلومات',
+                'svc-grid-4-desc': 'خدمة العملاء على مدار الساعة والصيانة والمراقبة الاستباقية لعمليات بدون انقطاع.',
+                'svc-grid-5': 'الاستشارات',
+                'svc-grid-5-desc': 'التخطيط الاستراتيجي للتكنولوجيا والتحول الرقمي والخارطات الطريقية للبنية الأساسية.',
+                'svc-grid-6': 'الخدمات المدارة',
+                'svc-grid-6-desc': 'المراقبة الشاملة والصيانة وتحسين بيئة تكنولوجيا المعلومات بالكامل.',
+                'why-title': 'لماذا اختيار SSIT',
+                'why-1': 'فريق خبير',
+                'why-1-desc': 'أكثر من 18 سنة من الخبرة في البنية الأساسية لتكنولوجيا المعلومات والأمان على جميع التقنيات الرئيسية.',
+                'why-2': 'سجل حافل',
+                'why-2-desc': 'موثوق به من قبل الشركات في الإمارات العربية المتحدة للحصول على حلول موثوقة وقابلة للتوسع.',
+                'why-3': 'الأمان أولاً',
+                'why-3-desc': 'بروتوكولات أمنية على مستوى المؤسسة وأفضل الممارسات لحماية البيانات والبنية الأساسية.',
+                'why-4': 'دعم 24/7',
+                'why-4-desc': 'المراقبة والدعم المستمر لضمان عدم توقف الأنظمة.',
+                'why-5': 'حلول قابلة للتوسع',
+                'why-5-desc': 'البنية الأساسية التي تنمو مع عملك من الشركات الناشئة إلى المؤسسات الكبرى.',
+                'why-6': 'فعالة من حيث التكلفة',
+                'why-6-desc': 'حلول محسّنة توفر أقصى قيمة بدون المساس بالجودة والأداء.',
+                'stat-1': 'سنوات من الخبرة',
+                'stat-2': 'مشاريع ناجحة',
+                'stat-3': 'إمارات الإمارات المخدومة',
+                'stat-4': 'ضمان التشغيل',
+                'contact-title': 'اتصل بنا',
+                'contact-desc': 'هل أنت مستعد لتحويل البنية الأساسية لتكنولوجيا المعلومات الخاصة بك؟ دعنا نناقش كيف يمكن لـ SSIT مساعدة عملك في النجاح.',
+                'email-link': '✉️ أرسل لنا بريد',
+                'phone-link': '📞 اتصل بنا',
+                'whatsapp-link': '💬 واتس آب',
+                'footer-1': '© 2024 SSIT - خدمات حلول تكنولوجيا المعلومات',
+                'footer-2': 'دبي | أبو ظبي | الشارقة | عجمان'
+            }
+        };
+
+        function setLang(lang) {
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update body direction and language
+            const html = document.documentElement;
+            html.lang = lang;
+            const body = document.body;
+            if (lang === 'ar') {
+                body.classList.add('ar');
+            } else {
+                body.classList.remove('ar');
+            }
+
+            // Update all text content
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll('.' + key);
+                elements.forEach(el => {
+                    el.textContent = translations[lang][key];
+                });
+            });
+
+            // Save preference
+            localStorage.setItem('lang', lang);
+        }
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('lang') || 'en';
+        setLang(savedLang);
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
