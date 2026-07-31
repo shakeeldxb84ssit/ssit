@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud & Azure Migration - SSIT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1d;
+            background: #ffffff;
+        }
+
+        body.ar {
+            direction: rtl;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Traditional Arabic', Helvetica, Arial, sans-serif;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            height: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #1d1d1d;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover { opacity: 0.6; }
+
+        .lang-toggle {
+            display: flex;
+            background: #f5f5f7;
+            border-radius: 8px;
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            color: #6e6e73;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #0071e3;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-hero {
+            background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%);
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .content-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1d1d1d;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .content-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0071e3;
+        }
+
+        .content-text p {
+            font-size: 1.05rem;
+            color: #6e6e73;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .content-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: #f5f5f7;
+            border-radius: 8px;
+            border-left: 4px solid #0071e3;
+        }
+
+        .feature-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1d1d1d;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #6e6e73;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0071e3 0%, #0077ed 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-white {
+            background: white;
+            color: #0071e3;
+        }
+
+        .cta-white:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .cta-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            background: #1d1d1d;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: #a1a1a6;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .features-list { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-image { height: 250px; }
+            .content-image { height: 250px; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .cta-buttons { flex-direction: column; }
+            .cta-button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="logo.png" alt="SSIT Logo"></a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="index.html#services" class="nav-services">Services</a></li>
+                    <li><a href="index.html#why" class="nav-why">Why Us</a></li>
+                    <li><a href="index.html#contact" class="nav-contact">Contact</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" onclick="setLang('en')">English</button>
+                    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1 class="page-title">Cloud & Azure Migration</h1>
+                <p class="page-subtitle">Seamlessly migrate your infrastructure to the cloud with Microsoft Azure and Microsoft 365 integration for enhanced scalability and security.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Cloud Services" class="hero-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title what-title">What is Cloud & Azure Migration?</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="what-heading">Transform Your IT with Cloud Technology</h3>
+                <p class="what-desc1">Cloud migration is the process of moving your data, applications, and IT infrastructure from on-premises servers to cloud platforms like Microsoft Azure. This enables greater flexibility, scalability, and cost efficiency.</p>
+                <p class="what-desc2">Azure provides enterprise-grade security, compliance, and global infrastructure. Microsoft 365 integration ensures seamless collaboration and productivity across your organization.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop" alt="Cloud Infrastructure" class="content-image">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title help-title">How SSIT Helps</h2>
+        <div class="content-grid" style="direction: ltr;">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Cloud Migration" class="content-image">
+            <div class="content-text">
+                <h3 class="help-heading">Expert Cloud Strategy</h3>
+                <p class="help-desc1">Our cloud specialists design custom migration strategies tailored to your business requirements. We handle every aspect from assessment to implementation and optimization.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="feature-1">Hybrid Cloud Setup</h4>
+                        <p class="feature-1-desc">Seamless integration between on-premises and cloud infrastructure</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-2">Azure AD Integration</h4>
+                        <p class="feature-2-desc">Identity management and single sign-on across cloud and on-premises</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-3">Microsoft 365 Setup</h4>
+                        <p class="feature-3-desc">Email, collaboration tools, and productivity suite configuration</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feature-4">Data Migration</h4>
+                        <p class="feature-4-desc">Secure and efficient data transfer with zero downtime</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title manage-title">How We Manage & Deliver</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <h3 class="manage-heading">Ongoing Cloud Management</h3>
+                <p class="manage-desc1">Migration is just the beginning. We provide continuous management, optimization, and support to ensure your cloud infrastructure performs at peak efficiency and remains secure.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4 class="manage-1">Assessment & Planning</h4>
+                        <p class="manage-1-desc">Comprehensive analysis and customized migration roadmap</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-2">Cost Optimization</h4>
+                        <p class="manage-2-desc">Monitor and optimize cloud spending for maximum ROI</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-3">Security & Compliance</h4>
+                        <p class="manage-3-desc">Maintain data protection and regulatory compliance in the cloud</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="manage-4">24/7 Support</h4>
+                        <p class="manage-4-desc">Continuous monitoring and expert support for your cloud environment</p>
+                    </div>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Cloud Operations" class="content-image">
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2 class="cta-title">Ready to Migrate to the Cloud?</h2>
+            <p class="cta-desc">Let our cloud experts guide you through a successful Azure migration. Get a free cloud assessment and migration roadmap.</p>
+            <div class="cta-buttons">
+                <a href="tel:+971501234567" class="cta-button cta-white">📞 Call Now</a>
+                <a href="https://wa.me/971501234567" class="cta-button cta-white">💬 WhatsApp</a>
+                <a href="index.html#contact" class="cta-button cta-outline">← Back to Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text-1">&copy; 2024 SSIT - Enterprise IT Solutions & Support Services</p>
+        <p class="footer-text-2">Serving Dubai | Abu Dhabi | Sharjah | Ajman</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                'nav-services': 'Services',
+                'nav-why': 'Why Us',
+                'nav-contact': 'Contact',
+                'page-title': 'Cloud & Azure Migration',
+                'page-subtitle': 'Seamlessly migrate your infrastructure to the cloud with Microsoft Azure and Microsoft 365 integration.',
+                'what-title': 'What is Cloud & Azure Migration?',
+                'what-heading': 'Transform Your IT with Cloud Technology',
+                'what-desc1': 'Cloud migration moves your data, applications, and IT infrastructure from on-premises to cloud platforms like Microsoft Azure.',
+                'what-desc2': 'Azure provides enterprise-grade security, compliance, and global infrastructure with Microsoft 365 integration.',
+                'help-title': 'How SSIT Helps',
+                'help-heading': 'Expert Cloud Strategy',
+                'help-desc1': 'Our cloud specialists design custom migration strategies tailored to your business requirements.',
+                'feature-1': 'Hybrid Cloud Setup',
+                'feature-1-desc': 'Seamless integration between on-premises and cloud infrastructure',
+                'feature-2': 'Azure AD Integration',
+                'feature-2-desc': 'Identity management and single sign-on across cloud and on-premises',
+                'feature-3': 'Microsoft 365 Setup',
+                'feature-3-desc': 'Email, collaboration tools, and productivity suite configuration',
+                'feature-4': 'Data Migration',
+                'feature-4-desc': 'Secure and efficient data transfer with zero downtime',
+                'manage-title': 'How We Manage & Deliver',
+                'manage-heading': 'Ongoing Cloud Management',
+                'manage-desc1': 'Migration is just the beginning. We provide continuous management and optimization.',
+                'manage-1': 'Assessment & Planning',
+                'manage-1-desc': 'Comprehensive analysis and customized migration roadmap',
+                'manage-2': 'Cost Optimization',
+                'manage-2-desc': 'Monitor and optimize cloud spending for maximum ROI',
+                'manage-3': 'Security & Compliance',
+                'manage-3-desc': 'Maintain data protection and regulatory compliance',
+                'manage-4': '24/7 Support',
+                'manage-4-desc': 'Continuous monitoring and expert support',
+                'cta-title': 'Ready to Migrate to the Cloud?',
+                'cta-desc': 'Let our cloud experts guide you through a successful Azure migration.',
+                'footer-text-1': '© 2024 SSIT - Enterprise IT Solutions & Support Services',
+                'footer-text-2': 'Serving Dubai | Abu Dhabi | Sharjah | Ajman'
+            },
+            ar: {
+                'nav-services': 'الخدمات',
+                'nav-why': 'لماذا نحن',
+                'nav-contact': 'اتصل بنا',
+                'page-title': 'هجرة السحابة و Azure',
+                'page-subtitle': 'قم بهجرة البنية الأساسية الخاصة بك إلى السحابة بسلاسة مع تكامل Azure و Microsoft 365.',
+                'what-title': 'ما هي هجرة السحابة و Azure؟',
+                'what-heading': 'حول تكنولوجيا المعلومات الخاصة بك باستخدام تقنية السحابة',
+                'what-desc1': 'تحرك هجرة السحابة بيانات تطبيقاتك من الخوادم المحلية إلى منصات السحابة مثل Microsoft Azure.',
+                'what-desc2': 'توفر Azure أمان وامتثال من الدرجة الأولى مع تكامل Microsoft 365.',
+                'help-title': 'كيف تساعد SSIT',
+                'help-heading': 'استراتيجية سحابة خبيرة',
+                'help-desc1': 'يصمم متخصصو السحابة لدينا استراتيجيات هجرة مخصصة لمتطلبات عملك.',
+                'feature-1': 'إعداد السحابة الهجينة',
+                'feature-1-desc': 'التكامل السلس بين البنية الأساسية المحلية والسحابية',
+                'feature-2': 'تكامل Azure AD',
+                'feature-2-desc': 'إدارة الهوية والدخول الموحد عبر السحابة والبنية المحلية',
+                'feature-3': 'إعداد Microsoft 365',
+                'feature-3-desc': 'تكوين البريد الإلكتروني وأدوات التعاون',
+                'feature-4': 'هجرة البيانات',
+                'feature-4-desc': 'نقل البيانات الآمن والفعال بدون توقف',
+                'manage-title': 'كيف ندير وننجز',
+                'manage-heading': 'إدارة السحابة المستمرة',
+                'manage-desc1': 'الهجرة مجرد البداية. نقدم إدارة وتحسين مستمر.',
+                'manage-1': 'التقييم والتخطيط',
+                'manage-1-desc': 'تحليل شامل وخارطة طريق هجرة مخصصة',
+                'manage-2': 'تحسين التكاليف',
+                'manage-2-desc': 'مراقبة وتحسين إنفاق السحابة',
+                'manage-3': 'الأمان والامتثال',
+                'manage-3-desc': 'الحفاظ على حماية البيانات والامتثال',
+                'manage-4': 'الدعم 24/7',
+                'manage-4-desc': 'المراقبة المستمرة والدعم الخبير',
+                'cta-title': 'هل أنت مستعد للهجرة إلى السحابة؟',
+                'cta-desc': 'اسمح لخبرائنا بإرشادك خلال هجرة Azure الناجحة.',
+                'footer-text-1': '© 2024 SSIT - حلول تكنولوجيا المعلومات والخدمات المدارة',
+                'footer-text-2': 'نخدم دبي | أبو ظبي | الشارقة | عجمان'
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const html = document.documentElement;
+            html.lang = lang;
+            const body = document.body;
+            if (lang === 'ar') {
+                body.classList.add('ar');
+            } else {
+                body.classList.remove('ar');
+            }
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.querySelectorAll('.' + key);
+                elements.forEach(el => {
+                    el.textContent = translations[lang][key];
+                });
+            });
+            localStorage.setItem('lang', lang);
+        }
+
+        const savedLang = localStorage.getItem('lang') || 'en';
+        if (savedLang === 'ar') {
+            document.body.classList.add('ar');
+        }
+        setLang(savedLang);
+    </script>
+</body>
+</html>
